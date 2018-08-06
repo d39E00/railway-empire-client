@@ -19,6 +19,7 @@ import {MapItemComponent} from './map-item/map-item.component';
 import {ChartComponent} from './chart/chart.component';
 import {AuditComponent} from './audit/audit.component';
 import {TripComponent} from './trip/trip.component';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -52,7 +53,7 @@ const appRoutes: Routes = [
     ChartComponent,
     AuditComponent,
     TripComponent],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
   bootstrap: [AppComponent],
   providers: [UserService, ItemRailwayService]
 })
