@@ -1,0 +1,10 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form" ngNativeValidate>
+	<input type="text" name="firstName" ngModel placeholder="name" required #firstName="ngModel" pattern="[A-Za-zА-Яа-яЁё]{3,15}" title="Name must contain only letters"
+	/>
+	<input type="text" name="lastName" ngModel placeholder="last name" #lastName="ngModel" required pattern="[A-Za-zА-Яа-яЁё]{3,15}" title="last name must contain only letters"
+	/>
+	<input type="email" name="login" ngModel placeholder="e-mail" #login="ngModel" required minlength="5" />
+	<input type="password" name="password" ngModel placeholder="password" #password="ngModel" required minlength="6" title="Password length mist be longer than 5 letters"
+	/>
+	<button>Registration</button>
+</form>
