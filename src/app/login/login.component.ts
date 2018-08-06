@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {User} from '../models/user';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +10,11 @@ import {NgForm} from '@angular/forms';
 })
 
 export class LoginComponent {
-  model: any = {};
-
-  login() {
-    alert('login ' + this.model.login);
+  constructor(private userService: UserService) {
   }
 
   onSubmit(f: NgForm) {
-    alert(f.value.login + f.value.password);  // { first: '', last: '' }
+    const user = new User(null, null, f.value.login, f.value.password, null, null);
+    this.userService.login(user);
   }
 }
