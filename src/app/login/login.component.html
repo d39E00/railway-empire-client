@@ -1,0 +1,8 @@
+<div class="content">
+	<!-- <div class="background"></div> -->
+	<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form" ngNativeValidate>
+		<input type="email" name="login" ngModel placeholder="e-mail" required #login="ngModel">
+		<input type="password" name="password" ngModel placeholder="password" #password="ngModel" required>
+		<button>Login</button>
+	</form>
+</div>
