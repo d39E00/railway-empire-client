@@ -20,7 +20,7 @@ export class UserService {
     const base64Credential: string = btoa(user.username + ':' + user.password);
     headers.append('Authorization', 'Basic ' + base64Credential);
     this.httpClient.post(this.URL_LOGIN, {
-      login: user.login,
+      username: user.login,
       password: user.password
     }, {headers: headers})
       .subscribe(
