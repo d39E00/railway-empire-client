@@ -1,0 +1,54 @@
+<header class="masthead" style="background-image: url('/src/assets/images/bg.png')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <form class="form-horizontal login_box2 align-items-center" #f="ngForm" (ngSubmit)="onSubmit(f)"
+                ngNativeValidate>
+            <div class="row">
+              <div class="col form-group">
+                <label class="text-warning font-weight-bold">FROM</label>
+                <input type="text" class="form-control text-center text-dark" placeholder="DEPARTURE STATION"
+                       autocomplete="off" name="stationDeparture"
+                       ngModel #stationDeparture="ngModel" required list="stationsList">
+              </div>
+              <div class="col-1"></div>
+              <div class="col form-group">
+                <label class="text-warning font-weight-bold">TO</label>
+                <input type="text" class="form-control text-center text-dark" placeholder="ARRIVAL STATION"
+                       name="stationArrival" ngModel
+                       #stationArrival="ngModel" required autocomplete="off" list="stationsList">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col form-group-4">
+                <label class="text-warning font-weight-bold">DATE DEPARTURE</label>
+                <input type="date" class="form-control text-center" width="50" name="dateDeparture" ngModel
+                       #dateDeparture="ngModel" required>
+              </div>
+              <div class="col-1"></div>
+              <div class="col form-group4">
+                <label class="text-warning font-weight-bold">DATE ARRIVAL</label>
+                <input type="date" class="form-control text-center" width="50" name="dateArrival" ngModel
+                       #dateArrival="ngModel" required>
+              </div>
+              <div class="col-1"></div>
+              <div class="col form-group">
+                <label class="text-warning font-weight-bold">TRAIN</label>
+                <input type="text" class="form-control text-center" width="50" placeholder="TRAIN" name="train" ngModel
+                       #train="ngModel"
+                       required autocomplete="off" list="trainsList">
+              </div>
+            </div>
+            <br>
+            <div class="text-center">
+              <button type="submit" class="btn btn-lg btn-outline-warning">search schedule
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
