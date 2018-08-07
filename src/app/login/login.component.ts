@@ -14,7 +14,7 @@ export class LoginComponent {
   }
 
   onSubmit(f: NgForm) {
-    const user = new User(null, null, f.value.login, f.value.password, null, null);
+    const user = {username: f.value.username, password: f.value.password};
     this.userService.login(user);
   }
 }

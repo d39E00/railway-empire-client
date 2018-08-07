@@ -46,7 +46,7 @@ const appRoutes: Routes = [
   {path: 'audit', component: AuditComponent},
   {path: 'trips', component: TripComponent},
   // {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
-  {path: '', component: ScheduleComponent},
+  {path: '', component: LoginComponent},
   {path: '**', redirectTo: ''}
 ];
 

@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {RequestOptions} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class UserService {
@@ -15,21 +14,28 @@ export class UserService {
 
 
   login(user) {
-    const headers = new HttpHeaders();
-    headers.append('Accept', 'application/json');
-    const base64Credential: string = btoa(user.username + ':' + user.password);
-    headers.append('Authorization', 'Basic ' + base64Credential);
-    this.httpClient.post(this.URL_LOGIN, {
-      username: user.login,
-      password: user.password
-    }, {headers: headers})
+    const body = 'username=' + user.username + '&password=' + user.password;
+    this.httpClient.post(this.URL_LOGIN, body
+      ,
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Basic ' + btoa(user.username + ':' + user.password),
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      })
       .subscribe(
         response => {
           alert('Success');
           console.log(response);
         },
         err => {
-          alert(JSON.stringify(err));
+          if (err.url === 'http://localhost:8000/login') {
+            alert('access');
+          } else {
+            alert('error');
+          }
         });
   }
 
