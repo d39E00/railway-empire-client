@@ -1,3 +1,27 @@
-<p>
-audit works!
-</p>
+<div class="container" id="app-deleted">
+  <br>
+  <div class="row text-center">
+    <div class="col-4">
+      <button type="submit" (click)="deletedStations()"
+              class="btn btn-circle btn-xl bg-warning btn-warning form-control">
+        <img src="/src/assets/images/railroad.png">
+      </button>
+    </div>
+    <div class="col-4">
+      <button type="submit" (click)="deletedTrains()"
+              class="btn  btn-circle btn-xl bg-warning btn-outline-warning form-control">
+        <img src="/src/assets/images/subway.png">
+      </button>
+    </div>
+    <div class="col-4">
+      <button type="submit" (click)="audit()"
+              class="btn  btn-circle btn-xl bg-warning btn-outline-warning form-control">
+        <img src="/src/assets/images/graph-analysis.png">
+      </button>
+    </div>
+  </div>
+  <br>
+  <app-table-train *ngIf="visibleTrain"></app-table-train>
+  <app-table-stations *ngIf="visibleStation"></app-table-stations>
+  <app-table-audit *ngIf="visibleAudit"></app-table-audit>
+</div>
