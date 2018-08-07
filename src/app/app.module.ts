@@ -20,6 +20,9 @@ import {ChartComponent} from './chart/chart.component';
 import {AuditComponent} from './audit/audit.component';
 import {TripComponent} from './trip/trip.component';
 import {HttpClientModule} from '@angular/common/http';
+import {AddTrainComponent} from './add-item/add-train/add-train.component';
+import {AddScheduleComponent} from './add-item/add-schedule/add-schedule.component';
+import {AddStationComponent} from './add-item/add-station/add-station.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -34,7 +37,7 @@ const appRoutes: Routes = [
   {path: 'audit', component: AuditComponent},
   {path: 'trips', component: TripComponent},
   // {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
-  {path: '', component: LoginComponent},
+  {path: '', component: AddItemComponent},
   {path: '**', redirectTo: ''}
 ];
 
@@ -52,7 +55,10 @@ const appRoutes: Routes = [
     MapItemComponent,
     ChartComponent,
     AuditComponent,
-    TripComponent],
+    TripComponent,
+    AddScheduleComponent,
+    AddStationComponent,
+    AddTrainComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
   bootstrap: [AppComponent],
   providers: [UserService, ItemRailwayService]
