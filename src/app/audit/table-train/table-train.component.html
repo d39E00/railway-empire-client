@@ -1,0 +1,22 @@
+<table class="table table-striped table-dark">
+	<thead class="font-weight-bold">
+		<tr>
+			<th class="text-center">Train</th>
+			<th class="text-center">Count carriages</th>
+			<th class="text-center">Count seats</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody class="text-center text-warning">
+		<tr *ngFor="let train of trains">
+			<td>{{train.trainName}}</td>
+			<td>{{train.cntCarriage}}</td>
+			<td>{{train.cntSeats}}</td>
+			<td>
+				<button class='btn btn-outline-warning' (click)="reestablishTrain(train.trainName)">
+                        <img src='/src/assets/images/restore.png'>
+                    </button>
+			</td>
+		</tr>
+	</tbody>
+</table>
