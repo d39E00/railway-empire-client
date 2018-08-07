@@ -23,7 +23,7 @@ export class UserService {
           'Authorization': 'Basic ' + btoa(user.username + ':' + user.password),
           'Content-Type': 'application/x-www-form-urlencoded',
           'X-Requested-With': 'XMLHttpRequest'
-        }
+        }, responseType: 'text'
       })
       .subscribe(
         response => {
@@ -31,11 +31,7 @@ export class UserService {
           console.log(response);
         },
         err => {
-          if (err.url === 'http://localhost:8000/login') {
-            alert('access');
-          } else {
-            alert('error');
-          }
+          alert(JSON.stringify(err));
         });
   }
 
