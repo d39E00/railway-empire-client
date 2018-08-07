@@ -1,0 +1,38 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form" ngNativeValidate>
+  <div class="row">
+    <div class="col">
+      <input type="text" placeholder="station departure" autocomplete="off" list="stationsList" name="stationDeparture"
+             ngModel
+             #stationDeparture="ngModel" class="form-control" required pattern="[A-Za-zА-Яа-яЁё]{3,15}"
+             title="Name must contain only letters"
+      />
+    </div>
+
+    <div class="col">
+      <input type="text" placeholder="station arrival" autocomplete="off" list="stationsList" name="stationArrival"
+             ngModel #stationArrival="ngModel"
+             required class="form-control" pattern="[A-Za-zА-Яа-яЁё]{3,15}" title="Name must contain only letters"/>
+    </div>
+
+    <div class="col">
+      <input type="text" placeholder="train" autocomplete="off" list="trainsList" name="trainSchedule" ngModel
+             #trainSchedule="ngModel"
+             class="form-control" required pattern="[A-Za-zА-Яа-яЁё]{1}[0-9]{3,5}"
+             title="Name must contain letter then number"/>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col">
+      <input type="datetime-local" value="2018-00-00T00:00:00" step="1" class="form-control" name="dateDeparture"
+             ngModel #dateDeparture="ngModel"
+             required/>
+    </div>
+    <div class="col">
+      <input type="datetime-local" value="2018-00-00T00:00:00" step="1" class="form-control" name="dateArrival" ngModel
+             #dateArrival="ngModel"
+      />
+    </div>
+  </div>
+  <button type="submit">ADD ITEM</button>
+</form>

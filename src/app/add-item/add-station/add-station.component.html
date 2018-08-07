@@ -1,0 +1,18 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form" ngNativeValidate>
+  <input type="text" placeholder="station name" pattern="[A-Za-zА-Яа-яЁё]{3,15}" title="Name must contain only letters"
+         required
+         name="stationName" ngModel #stationName="ngModel" class="form-control"/>
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="latitude [empty]" id="coordinatesX"
+             pattern="\d+(\.\d{2, 8})?" name="latitude" ngModel #latitude="ngModel"/>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="longitude [empty]" id="coordinatesY"
+             pattern="\d+(\.\d{2, 8})?" name="longitude" ngModel #longitude="ngModel"/>
+    </div>
+  </div>
+  <button type="submit">
+    ADD ITEM
+  </button>
+</form>

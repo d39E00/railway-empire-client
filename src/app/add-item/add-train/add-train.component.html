@@ -1,0 +1,16 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form" ngNativeValidate>
+  <div>
+    <input type="text" class="form-control" placeholder="train" name="train" ngModel #train="ngModel" autocomplete="off" list="trainsList"
+           pattern="[A-Za-zА-Яа-яЁё]{1}[0-9]{3,5}"
+           title="Name must contain letter then number" required minlength="4" maxlength="6"/></div>
+  <div class="row">
+    <div class="col">
+      <input type="number" placeholder="count carriage" class="form-control" name="cntCarriage" ngModel
+             #cntCarriage="ngModel" required min="5" max="25">
+    </div>
+    <div class="col">
+      <input type="number" class="form-control" value="30" name="cntSeats" ngModel #cntSeats="ngModel" disabled>
+    </div>
+  </div>
+  <button type="submit">ADD ITEM</button>
+</form>
