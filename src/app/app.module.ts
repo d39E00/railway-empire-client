@@ -23,6 +23,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {AddTrainComponent} from './add-item/add-train/add-train.component';
 import {AddScheduleComponent} from './add-item/add-schedule/add-schedule.component';
 import {AddStationComponent} from './add-item/add-station/add-station.component';
+import {TableTrainComponent} from './audit/table-train/table-train.component';
+import {TableStationsComponent} from './audit/table-stations/table-stations.component';
+import {TableAuditComponent} from './audit/table-audit/table-audit.component';
+import {ScheduleByDatesComponent} from './schedule/schedule-by-dates/schedule-by-dates.component';
+import {ScheduleByDatesStationsTrainComponent} from
+    './schedule/schedule-by-dates-stations-train/schedule-by-dates-stations-train.component';
+import {ScheduleByDatesStationsComponent} from './schedule/schedule-by-dates-stations/schedule-by-dates-stations.component';
+import {ScheduleByDatesTrainComponent} from
+    './schedule/schedule-by-dates-train/schedule-by-dates-train.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -37,7 +46,7 @@ const appRoutes: Routes = [
   {path: 'audit', component: AuditComponent},
   {path: 'trips', component: TripComponent},
   // {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
-  {path: '', component: AddItemComponent},
+  {path: '', component: ScheduleComponent},
   {path: '**', redirectTo: ''}
 ];
 
@@ -58,7 +67,14 @@ const appRoutes: Routes = [
     TripComponent,
     AddScheduleComponent,
     AddStationComponent,
-    AddTrainComponent],
+    AddTrainComponent,
+    TableAuditComponent,
+    TableStationsComponent,
+    TableTrainComponent,
+    ScheduleByDatesComponent,
+    ScheduleByDatesStationsComponent,
+    ScheduleByDatesStationsTrainComponent,
+    ScheduleByDatesTrainComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
   bootstrap: [AppComponent],
   providers: [UserService, ItemRailwayService]
