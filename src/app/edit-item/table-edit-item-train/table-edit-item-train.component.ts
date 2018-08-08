@@ -9,18 +9,20 @@ import {TrainService} from '../../service/train.service';
 })
 export class TableEditItemTrainComponent implements OnInit {
 
-  trains = [];
+  trains: any = [];
 
   constructor(private trainService: TrainService) {
   }
 
   ngOnInit() {
-    this.trains = this.trainService.getAll();
+    this.trainService.getAll().subscribe(
+      res => this.trains = res,
+      error1 => alert(JSON.stringify(error1)));
   }
 
   edit(train, i) {
     const newName = 'new train';
-    // swal
+    // TODO swal
     this.trains[i].name = newName;
     const trainDTO = {
       trainName: train.trainName,
@@ -28,11 +30,14 @@ export class TableEditItemTrainComponent implements OnInit {
       cntCarriage: train.cntCarriage,
       cntSeats: train.cntSeats
     };
-    this.trainService.edit(trainDTO);
+    this.trainService.edit(trainDTO).subscribe(
+      res => alert(JSON.stringify(res)),
+      error => alert(JSON.stringify(error)));
   }
 
   delete(trainName, i) {
-    this.trainService.delete(trainName);
-    this.trains.splice(i, 1);
+    this.trainService.delete(trainName).subscribe(
+      res => this.trains.splice(i, 1),
+      error1 => alert(JSON.stringify(error1)));
   }
 }

@@ -11,10 +11,12 @@ export class TableEditItemStationComponent implements OnInit {
   constructor(private stationService: StationService) {
   }
 
-  stations = [];
+  stations: any = [];
 
   ngOnInit() {
-    this.stations = this.stationService.getAll();
+    this.stationService.getAll().subscribe(
+      res => this.stations = res,
+      error => alert(error));
   }
 
   edit(station, i) {
@@ -26,11 +28,19 @@ export class TableEditItemStationComponent implements OnInit {
       latitude: station.latitude,
       longitude: station.longitude
     };
-    this.stationService.edit(stationDTO);
+    this.stationService.edit(stationDTO).subscribe(
+      res => {
+        alert('success');
+        console.log(res);
+      },
+      error => alert(JSON.stringify(error)));
   }
 
   delete(stationName, i) {
-    this.stations.splice(i, 1);
-    this.stationService.delete(stationName);
+    this.stationService.delete(stationName).subscribe(res => {
+        this.stations.splice(i, 1);
+        console.log(res);
+      },
+      error => alert(JSON.stringify(error)));
   }
 }
