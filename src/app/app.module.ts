@@ -10,7 +10,6 @@ import {MenuComponent} from './menu/menu.component';
 import {FooterComponent} from './footer/footer.component';
 import {UserService} from './service/user.service';
 import {AddItemComponent} from './add-item/add-item.component';
-import {ItemRailwayService} from './service/item-railway.service';
 import {MapUserComponent} from './map-user/map-user.component';
 import {ScheduleComponent} from './schedule/schedule.component';
 import {EditItemComponent} from './edit-item/edit-item.component';
@@ -32,6 +31,13 @@ import {ScheduleByDatesStationsTrainComponent} from
 import {ScheduleByDatesStationsComponent} from './schedule/schedule-by-dates-stations/schedule-by-dates-stations.component';
 import {ScheduleByDatesTrainComponent} from
     './schedule/schedule-by-dates-train/schedule-by-dates-train.component';
+import {ScheduleService} from './service/schedule.service';
+import {TrainService} from './service/train.service';
+import {StationService} from './service/station.service';
+import {AuditService} from './service/audit.service';
+import {TableEditItemScheduleComponent} from './edit-item/table-edit-item-schedule/table-edit-item-schedule.component';
+import {TableEditItemStationComponent} from './edit-item/table-edit-item-station/table-edit-item-station.component';
+import {TableEditItemTrainComponent} from './edit-item/table-edit-item-train/table-edit-item-train.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -46,7 +52,7 @@ const appRoutes: Routes = [
   {path: 'audit', component: AuditComponent},
   {path: 'trips', component: TripComponent},
   // {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
-  {path: '', component: LoginComponent},
+  {path: '', component: AuditComponent},
   {path: '**', redirectTo: ''}
 ];
 
@@ -74,10 +80,17 @@ const appRoutes: Routes = [
     ScheduleByDatesComponent,
     ScheduleByDatesStationsComponent,
     ScheduleByDatesStationsTrainComponent,
-    ScheduleByDatesTrainComponent],
+    ScheduleByDatesTrainComponent,
+    TableEditItemScheduleComponent,
+    TableEditItemStationComponent,
+    TableEditItemTrainComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
   bootstrap: [AppComponent],
-  providers: [UserService, ItemRailwayService]
+  providers: [UserService,
+    ScheduleService,
+    TrainService,
+    StationService,
+    AuditService]
 })
 export class AppModule {
 }
