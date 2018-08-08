@@ -1,20 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class AuditService {
 
-  audits = [];
-
-  constructor() { }
-
-  getAll() {
-    /*
-    /audit
-    */
-
-    let audit = { date: '22.03.1234', userLogin: 'elinas', operations: 'deleted', newValue: 'new' };
-    this.audits.push(audit);
-    return this.audits;
+  constructor(private httpClient: HttpClient) {
   }
 
+  URL_GET_ALL_AUDITS = 'http://localhost:8000/audit';
+
+  getAll() {
+    return this.httpClient.get(this.URL_GET_ALL_AUDITS);
+  }
 }
