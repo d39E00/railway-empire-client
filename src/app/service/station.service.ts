@@ -1,42 +1,39 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class StationService {
-  stations = [];
+  constructor(private httpClient: HttpClient) {
+  }
 
-  constructor() { }
+  URL_GET_DELETED_STATIONS = 'http://localhost:8000/station/deletedStations';
+  URL_REESTABLISH_STATION = 'http://localhost:8000/station/reestablish/';
+  URL_DELETE_STATION = 'http://localhost:8000/station/delete/';
+  URL_UPDATE_STATION = 'http://localhost:8000/station/update/';
+  URL_ADD_STATION = 'http://localhost:8000/station/add';
+  URL_GET_ALL = 'http://localhost:8000/station/all';
 
   add(station) {
-    /* add google.map
-    '/station/add'
-    */
-    alert('add');
+    return this.httpClient.post(this.URL_ADD_STATION, station);
   }
 
   getDeleted() {
-    // "/station/deletedStations";
-    let station = { name: 'station', latitude: '22', longitude: '34' };
-    this.stations.push(station);
-    return this.stations;
+    return this.httpClient.get(this.URL_GET_DELETED_STATIONS);
   }
 
   reestablishStation(station) {
-    alert(station);
-    // station/reestablish/" + station
+    return this.httpClient.get(this.URL_REESTABLISH_STATION + station);
   }
 
   getAll() {
-    let station = { name: 'station', latitude: '22', longitude: '34' };
-    this.stations.push(station);
-    return this.stations;
+    return this.httpClient.get(this.URL_GET_ALL);
   }
 
-  edit(train) {
-    // /station/update"; put
-    alert(JSON.stringify(train));
+  edit(station) {
+    return this.httpClient.put(this.URL_UPDATE_STATION, station);
   }
 
-  delete(train) {
-    // /station/delete/" + name;
+  delete(station) {
+    return this.httpClient.delete(this.URL_DELETE_STATION + station);
   }
 }
