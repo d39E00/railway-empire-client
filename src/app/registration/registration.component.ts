@@ -15,7 +15,19 @@ export class RegistrationComponent {
   }
 
   onSubmit(f: NgForm) {
-    const user = new User(f.value.firstName, f.value.lastName, f.value.login, f.value.password, null, null);
-    this.userService.registration(user);
+    const user = {
+      firstName: f.value.firstName,
+      lastName: f.value.lastName,
+      login: f.value.login,
+      password: f.value.password
+    };
+    this.userService.registration(user).subscribe(
+      response => {
+        alert('Success');
+        console.log(response);
+      },
+      err => {
+        alert(JSON.stringify(err));
+      });
   }
 }
