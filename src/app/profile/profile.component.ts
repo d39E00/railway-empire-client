@@ -1,28 +1,40 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
 import {NgForm} from '@angular/forms';
-import {User} from '../models/user';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-
 export class ProfileComponent implements OnInit {
-  ngOnInit() {
-  }
+
+  firstName = '';
+  lastName = '';
+  login = '';
+  birthDay = '';
+  sex = '';
 
   constructor(private userService: UserService) {
-    this.profile();
+  }
+
+  ngOnInit() {
+    const user = this.userService.getProfile();
+    this.firstName = user.firstName;
+    this.lastName = user.lastName;
+    this.login = user.login;
+    this.birthDay = user.birthDay;
+    this.sex = user.sex;
   }
 
   onSubmit(f: NgForm) {
-    const user = new User(f.value.firstName, f.value.lastName, f.value.login, f.value.password, f.value.birthDay, f.value.sex);
-    this.userService.edit(user);
-  }
-
-  profile() {
-    this.userService.profile();
+    const user = {
+      firstName: f.value.firstName,
+      lastName: f.value.lastName,
+      login: f.value.login,
+      birthDay: f.value.birthDay,
+      sex: f.value.sex
+    };
+    this.userService.editProfile(user);
   }
 }

@@ -1,25 +1,27 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form" ngNativeValidate>
-  <input type="text" name="firstName" ngModel placeholder="name" required #firstName="ngModel"
-         pattern="[A-Za-zА-Яа-яЁё]{3,15}" title="Name must contain only letters"/>
+<app-menu></app-menu>
+<form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)" ngNativeValidate>
+  <input type="text" name="firstName" [(ngModel)]="firstName" value="{{firstName}}" placeholder="firstName" required
+         pattern="[A-Za-zА-Яа-яЁё]{3,15}"
+         title="Name must contain only letters"/>
 
-  <input type="text" name="lastName" ngModel placeholder="last name" #lastName="ngModel" required
-         pattern="[A-Za-zА-Яа-яЁё]{3,15}" title="last name must contain only letters"/>
+  <input type="text" name="lastName" [(ngModel)]="lastName" value="{{lastName}}" required
+         pattern="[A-Za-zА-Яа-яЁё]{3,15}"
+         title="Name must contain only letters"/>
 
-  <input type="email" name="login" ngModel placeholder="e-mail" #login="ngModel" required minlength="5"/>
+  <input type="email" name="login" [(ngModel)]="login" value="{{login}}" required/>
 
-  <input type="date" name="birthDay" ngModel placeholder="birthDay" #password="ngModel"/>
+  <input type="date" name="birthDay" [(ngModel)]="birthDay" value="{{birthDay}}"/>
 
   <div class="row align-items-center">
     <div class="col">
-      <input type="radio" id="radioMale" name="sex" value="male" ngModel #sex="ngModel"/>
+      <input type="radio" name="sex" value="male" [(ngModel)]="sex"/>
       <label>male</label>
     </div>
-
     <div class="col">
-      <input type="radio" id="radioFemale" name="sex" value="female" ngModel #sex="ngModel"/>
+      <input type="radio" name="sex" value="female" [(ngModel)]="sex"/>
       <label>female</label>
     </div>
-
   </div>
-  <button>Edit profile</button>
+
+  <button type="submit">EDIT</button>
 </form>
