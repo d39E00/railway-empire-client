@@ -23,6 +23,8 @@ export class AddTrainComponent implements OnInit {
       cntCarriage: f.value.cntCarriage,
       cntSeats: f.value.train
     };
-    this.trainService.add(train);
+    this.trainService.add(train).subscribe(
+      res => alert(JSON.stringify(res)),
+      error => alert(JSON.stringify(error)));
   }
 }

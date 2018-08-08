@@ -21,7 +21,11 @@ export class AddStationComponent implements OnInit {
       latitude: f.value.latitude,
       longitude: f.value.longitude
     };
-    this.stationService.add(station);
+    /*
+    TODO: add google.map
+    */
+    this.stationService.add(station).subscribe(
+      res => alert(JSON.stringify(res)),
+      error => alert(JSON.stringify(error)));
   }
-
 }

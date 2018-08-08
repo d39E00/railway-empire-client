@@ -23,6 +23,8 @@ export class AddScheduleComponent implements OnInit {
       dateArrival: f.value.dateArrival !== '' ? f.value.dateArrival.replace('T', ' ') + ':00' : '',
       trainName: f.value.trainSchedule
     };
-    this.scheduleService.add(schedule);
+    this.scheduleService.add(schedule).subscribe(
+      data => alert(JSON.stringify(data)),
+      error => alert(JSON.stringify(error)));
   }
 }
