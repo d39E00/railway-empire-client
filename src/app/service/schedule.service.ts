@@ -1,26 +1,33 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class ScheduleService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  schedules = [];
+  URL_ADD_SCHEDULE = 'http://localhost:8000/schedule/add';
+  URL_GET_ALL_SCHEDULE = 'http://localhost:8000/schedule/add';
+
+
   add(schedule) {
-    /*
-    '/schedule/add'
-    */
-    alert('add schedule');
+    return this.httpClient.post(this.URL_ADD_SCHEDULE, schedule);
   }
 
-  getAll() { return this.schedules; }
+  getAll() {
+    return this.httpClient.get(this.URL_GET_ALL_SCHEDULE);
+  }
 
-  delete(scheduleName) { 
+  delete(scheduleName) {
     // get id
+    return scheduleName;
   }
 
-  edit(schedule) { }
+  edit(schedule) {
+  }
 
-  info(schedule) { }
+  info(schedule) {
+  }
 
 }
