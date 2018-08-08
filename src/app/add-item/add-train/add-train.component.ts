@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {TrainService} from '../../service/train.service';
 
 @Component({
   selector: 'app-add-train',
@@ -8,15 +9,20 @@ import { NgForm } from '@angular/forms';
 })
 export class AddTrainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private trainService: TrainService) {
+  }
+
+  cntSeats = 30;
 
   ngOnInit() {
   }
 
   onSubmit(f: NgForm) {
-    alert(
-      f.value.cntSeats
-      + f.value.cntCarriage +
-      f.value.train);
+    const train = {
+      trainName: f.value.cntSeats,
+      cntCarriage: f.value.cntCarriage,
+      cntSeats: f.value.train
+    };
+    this.trainService.add(train);
   }
 }

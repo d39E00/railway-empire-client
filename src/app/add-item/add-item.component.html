@@ -1,22 +1,37 @@
-<form class="content">
-  <div class="row">
-    <div class="col">
-      <button class="btn btn-circle btn-xl bg-warning btn-warning form-control" type="submit" (click)="stationSubmit()">
-        <img src="/src/assets/images/railroad.png">
-      </button>
+<app-menu></app-menu>
+<div class="wrapper" id="app-1">
+  <div class="background"></div>
+  <div class="rocks_1"></div>
+  <div class="rocks_2"></div>
+  <div class="rails"></div>
+  <div class="train"></div>
+  <div class="ground"></div>
+  <div class="lights"></div>
+  <div class="moon"></div>
+  <form class="content">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-circle btn-xl bg-warning btn-warning form-control" type="submit"
+                (click)="stationSubmit()">
+          <img src="/src/assets/images/railroad.png">
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn btn-circle btn-xl bg-warning btn-warning form-control" type="submit"
+                (click)="scheduleSubmit()">
+          <img src="/src/assets/images/calendar.png">
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn btn-circle btn-xl bg-warning btn-warning form-control" type="submit"
+                (click)="trainSubmit()">
+          <img src="/src/assets/images/subway.png">
+        </button>
+      </div>
     </div>
-    <div class="col">
-      <button class="btn btn-circle btn-xl bg-warning btn-warning form-control" type="submit" (click)="scheduleSubmit()">
-        <img src="/src/assets/images/calendar.png">
-      </button>
-    </div>
-    <div class="col">
-      <button class="btn btn-circle btn-xl bg-warning btn-warning form-control" type="submit" (click)="trainSubmit()">
-        <img src="/src/assets/images/subway.png">
-      </button>
-    </div>
-  </div>
-  <app-add-schedule *ngIf="visibleSchedule"></app-add-schedule>
-  <app-add-train *ngIf="visibleTrain"></app-add-train>
-  <app-add-station *ngIf="visibleStation"></app-add-station>
-</form>
+  <br>
+    <app-add-schedule *ngIf="visibleSchedule"></app-add-schedule>
+    <app-add-train *ngIf="visibleTrain"></app-add-train>
+    <app-add-station *ngIf="visibleStation"></app-add-station>
+  </form>
+</div>

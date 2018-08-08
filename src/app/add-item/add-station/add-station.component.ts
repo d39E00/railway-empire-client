@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {StationService} from '../../service/station.service';
 
 @Component({
   selector: 'app-add-station',
@@ -8,16 +9,19 @@ import { NgForm } from '@angular/forms';
 })
 export class AddStationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private stationService: StationService) {
+  }
 
   ngOnInit() {
   }
 
   onSubmit(f: NgForm) {
-    alert(
-      f.value.stationName
-      + f.value.latitude +
-      f.value.longitude);
+    const station = {
+      name: f.value.stationName,
+      latitude: f.value.latitude,
+      longitude: f.value.longitude
+    };
+    this.stationService.add(station);
   }
 
 }

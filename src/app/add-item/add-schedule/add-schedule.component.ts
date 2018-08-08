@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {ScheduleService} from '../../service/schedule.service';
 
 @Component({
   selector: 'app-add-schedule',
@@ -9,18 +9,20 @@ import { NgForm } from '@angular/forms';
 })
 export class AddScheduleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private scheduleService: ScheduleService) {
+  }
 
   ngOnInit() {
   }
 
   onSubmit(f: NgForm) {
-    alert(
-      f.value.stationArrival
-      + f.value.stationArrival +
-      f.value.dateDeparture
-      + f.value.dateArrival
-      + f.value.trainSchedule);  
+    const schedule = {
+      stationDepartureName: f.value.stationDeparture,
+      stationArrivalName: f.value.stationArrival,
+      dateDeparture: f.value.dateDeparture.replace('T', ' ') + ':00',
+      dateArrival: f.value.dateArrival !== '' ? f.value.dateArrival.replace('T', ' ') + ':00' : '',
+      trainName: f.value.trainSchedule
+    };
+    this.scheduleService.add(schedule);
   }
-
 }
