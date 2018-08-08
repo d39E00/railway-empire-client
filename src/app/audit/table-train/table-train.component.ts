@@ -8,17 +8,20 @@ import {TrainService} from '../../service/train.service';
 })
 export class TableTrainComponent implements OnInit {
 
-  trains = [];
+  trains: any = [];
 
   constructor(private trainService: TrainService) {
   }
 
   ngOnInit() {
-    this.trains = this.trainService.getDeleted();
+    this.trainService.getDeleted().subscribe(
+      res => this.trains = res,
+      error1 => alert(JSON.stringify(error1)));
   }
 
   reestablishTrain(trainName, i) {
-    this.trains.splice(i, 1);
-    this.trainService.reestablishTrain(trainName);
+    this.trainService.reestablishTrain(trainName).subscribe(
+      res => this.trains.splice(i, 1),
+      error1 => alert(JSON.stringify(error1)));
   }
 }

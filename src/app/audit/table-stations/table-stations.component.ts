@@ -8,18 +8,22 @@ import {StationService} from '../../service/station.service';
 })
 export class TableStationsComponent implements OnInit {
 
-  stations = [];
+  stations: any = [];
 
   constructor(private stationService: StationService) {
   }
 
   ngOnInit() {
-    this.stations = this.stationService.getDeleted();
+    this.stationService.getDeleted().subscribe(res => this.stations = res,
+      error => alert(JSON.stringify(error)));
   }
 
   reestablishStation(station, i) {
-    this.stationService.reestablishStation(station);
-    this.stations.splice(i, 1);
+    this.stationService.reestablishStation(station).subscribe(
+      res => {
+        console.log(res);
+        this.stations.splice(i, 1);
+      },
+      error => alert(JSON.stringify(error)));
   }
-
 }
