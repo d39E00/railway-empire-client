@@ -1,0 +1,31 @@
+<table class="table table-striped table-dark text-center">
+  <thead class="text-center font-weight-bold">
+  <tr>
+    <th class="text-center">Train</th>
+    <th class="text-center">Station DEPARTURE</th>
+    <th class="text-center">Station ARRIVAL</th>
+    <th class="text-center">Date DEPARTURE</th>
+    <th class="text-center">Date ARRIVAL</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody class="text-center text-warning">
+  <tr *ngFor="let schedule of schedules; let i=index">
+    <td>{{schedule.trainName}}</td>
+    <td> {{schedule.stationDepartureName}}</td>
+    <td> {{schedule.stationArrivalName}}</td>
+    <td>{{schedule.dateDeparture}}</td>
+    <td> {{schedule.dateArrival}}</td>
+    <td>
+      <button class='btn btn-outline-warning editSchedule' (click)="edit(schedule, i)"><img
+        src='/src/assets/images/edit.png'>
+      </button>
+      <button class='btn btn-outline-warning deleteSchedule' (click)="delete(schedule.name, i)"><img
+        src='/src/assets/images/rubbish-bin.png'></button>
+      <button class='btn btn-outline-warning openScheduleTicket' (click)="info(i)">
+        <img src='/src/assets/images/magnifier.png'></button>
+    </td>
+  </tr>
+
+  </tbody>
+</table>

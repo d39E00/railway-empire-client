@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-edit-item',
@@ -6,10 +6,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-item.component.css']
 })
 export class EditItemComponent implements OnInit {
+  visibleStation = true;
+  visibleTrain = false;
+  visibleSchedule = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  visibledTrain() {
+    this.visibleTrain = true;
+    this.visibleSchedule = false;
+    this.visibleStation = false;
+  }
+
+  visibledSchedule() {
+    this.visibleTrain = false;
+    this.visibleSchedule = true;
+    this.visibleStation = false;
+  }
+
+  visibledStation() {
+    this.visibleTrain = false;
+    this.visibleSchedule = false;
+    this.visibleStation = true;
+  }
 }

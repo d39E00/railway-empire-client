@@ -1,0 +1,23 @@
+<table class="table table-striped table-dark text-center">
+  <thead class="font-weight-bold">
+  <tr>
+    <th class="text-center">Station name</th>
+    <th class="text-center">Latitude</th>
+    <th class="text-center">Longitude</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody class="text-center text-warning">
+  <tr *ngFor="let station of stations; let i=index">
+    <td>{{station.name}}</td>
+    <td>{{station.latitude}}</td>
+    <td>{{station.longitude}}</td>
+    <td>
+      <button class='btn btn-outline-warning editStation' (click)="edit(station, i)">
+        <img src='/src/assets/images/edit.png'></button>
+      <button class='btn btn-outline-warning deleteStation' (click)="delete(station.name, i)">
+        <img src='/src/assets/images/rubbish-bin.png'></button>
+    </td>
+  </tr>
+  </tbody>
+</table>

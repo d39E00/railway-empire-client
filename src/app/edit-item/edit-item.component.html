@@ -1,3 +1,26 @@
-<p>
-edit-item works!
-</p>
+<app-menu></app-menu>
+<div class="container">
+  <br>
+  <div class="row text-center">
+    <div class="col-4">
+      <button (click)="visibledStation()" class="btn btn-circle btn-xl bg-warning btn-warning form-control">
+        <img
+          src="/src/assets/images/railroad.png"></button>
+    </div>
+    <div class="col-4">
+      <button (click)="visibledSchedule()" class="btn btn-circle btn-xl bg-warning btn-outline-warning form-control">
+        <img
+          src="/src/assets/images/calendar.png"></button>
+    </div>
+    <div class="col-4">
+      <button (click)="visibledTrain()" class="btn btn-circle btn-xl bg-warning btn-outline-warning form-control"><img
+        src="/src/assets/images/subway.png"></button>
+    </div>
+  </div>
+  <br>
+  <app-table-edit-item-station *ngIf="visibleStation"></app-table-edit-item-station>
+
+  <app-table-edit-item-train *ngIf="visibleTrain"></app-table-edit-item-train>
+
+  <app-table-edit-item-schedule *ngIf="visibleSchedule"></app-table-edit-item-schedule>
+</div>
