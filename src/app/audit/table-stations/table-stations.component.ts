@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {StationService} from '../../service/station.service';
 
 @Component({
   selector: 'app-table-stations',
@@ -8,11 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class TableStationsComponent implements OnInit {
 
   stations = [];
-  constructor() { }
+
+  constructor(private stationService: StationService) {
+  }
 
   ngOnInit() {
-    const station = { name: 'station', latitude: '22', longitude: '34' };
-    this.stations.push(station);
+    this.stations = this.stationService.getDeleted();
+  }
+
+  reestablishStation(station, i) {
+    this.stationService.reestablishStation(station);
+    this.stations.splice(i, 1);
   }
 
 }

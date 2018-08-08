@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {TrainService} from '../../service/train.service';
 
 @Component({
   selector: 'app-table-train',
@@ -9,12 +10,15 @@ export class TableTrainComponent implements OnInit {
 
   trains = [];
 
-  constructor() {
+  constructor(private trainService: TrainService) {
   }
 
   ngOnInit() {
-    const train = {trainName: 'first', cntCarriage: '12', cntSeats: '30'};
-    this.trains.push(train);
+    this.trains = this.trainService.getDeleted();
   }
 
+  reestablishTrain(trainName, i) {
+    this.trains.splice(i, 1);
+    this.trainService.reestablishTrain(trainName);
+  }
 }

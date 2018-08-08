@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-audit',
@@ -11,7 +11,8 @@ export class AuditComponent implements OnInit {
   visibleStation = false;
   visibleAudit = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

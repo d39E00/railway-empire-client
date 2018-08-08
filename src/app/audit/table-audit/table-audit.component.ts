@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AuditService} from '../../service/audit.service';
 
 @Component({
   selector: 'app-table-audit',
@@ -9,14 +10,14 @@ export class TableAuditComponent implements OnInit {
 
   audits = [];
 
-  constructor() {
+  constructor(private auditService: AuditService) {
   }
 
   ngOnInit() {
-    const audit = {date: '22.03.1234', userLogin: 'elinas', operations: 'deleted', newValue: 'new'};
-    const audit2 = {date: '22.03.1234', userLogin: 'elinas', operations: 'deleted', newValue: 'new'};
-    this.audits.push(audit);
-    this.audits.push(audit2);
+    this.audits = this.auditService.getAll();
   }
 
+  auditInfo(i) {
+    alert(JSON.stringify(this.audits[i]));
+  }
 }

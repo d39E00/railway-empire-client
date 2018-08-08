@@ -9,13 +9,13 @@
   </tr>
   </thead>
   <tbody class="text-center text-warning">
-  <tr *ngFor="let audit of audits">
+  <tr *ngFor="let audit of audits; let i=index">
     <td>{{audit.date}}</td>
     <td>{{audit.userLogin}}</td>
     <td>{{audit.operations}}</td>
     <td>{{audit.newValue}}</td>
     <td>
-      <button class='btn btn-outline-warning' (click)="auditInfo(audit.id)">
+      <button class='btn btn-outline-warning' (click)="auditInfo(i)">
         <img src='/src/assets/images/restore.png'></button>
     </td>
   </tr>
