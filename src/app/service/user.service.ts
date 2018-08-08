@@ -52,26 +52,20 @@ export class UserService {
         });
   }
 
-  edit(user) {
-    this.httpClient.post(this.URL_PROFILE_POST, {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      login: user.login,
-      password: user.password,
-      birthDay: user.birthDay,
-      sex: user.sex
-    })
-      .subscribe(
-        response => {
-          alert('Success');
-          console.log(response);
-        },
-        err => {
-          alert(JSON.stringify(err));
-        });
+  editProfile(user) {
+    // '/home/update'
+    alert(JSON.stringify(user));
   }
 
-  profile() {
-    this.httpClient.get(this.URL_PROFILE_GET);
+  getProfile() {
+    // '/home/profile/get'
+    const user = {
+      firstName: 'Elinas',
+      lastName: 'Valieva',
+      login: 'login@mail.ru',
+      birthDay: '06.07.1995',
+      sex: 'female'
+    };
+    return user;
   }
 }
