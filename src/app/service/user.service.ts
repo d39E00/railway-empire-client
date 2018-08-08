@@ -60,10 +60,10 @@ export class UserService {
   getProfile() {
     // '/home/profile/get'
     const user = {
-      firstName: 'Elinas',
+      firstName: 'Elina',
       lastName: 'Valieva',
       login: 'login@mail.ru',
-      birthDay: '06.07.1995',
+      birthDay: '1995-07-06',
       sex: 'female'
     };
     return user;
