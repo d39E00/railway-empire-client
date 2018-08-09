@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StationService} from '../../service/station.service';
+import {Station} from '../../models/station';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-table-stations',
@@ -8,14 +10,17 @@ import {StationService} from '../../service/station.service';
 })
 export class TableStationsComponent implements OnInit {
 
-  stations: any = [];
+  stations: Station[] = [];
 
   constructor(private stationService: StationService) {
   }
 
   ngOnInit() {
-    this.stationService.getDeleted().subscribe(res => this.stations = res,
-      error => alert(JSON.stringify(error)));
+    this.stationService.getDeleted().subscribe(res => {
+      this.stations = res;
+    }, error1 => {
+      alert(JSON.stringify(error1));
+    });
   }
 
   reestablishStation(station, i) {

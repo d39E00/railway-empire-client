@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TrainService} from '../../service/train.service';
+import {Train} from '../../models/train';
 
 @Component({
   selector: 'app-table-train',
@@ -8,7 +9,7 @@ import {TrainService} from '../../service/train.service';
 })
 export class TableTrainComponent implements OnInit {
 
-  trains: any = [];
+  trains: Train[] = [];
 
   constructor(private trainService: TrainService) {
   }

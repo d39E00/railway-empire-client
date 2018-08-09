@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuditService} from '../../service/audit.service';
+import {Audit} from '../../models/audit';
 
 @Component({
   selector: 'app-table-audit',
@@ -8,14 +9,16 @@ import {AuditService} from '../../service/audit.service';
 })
 export class TableAuditComponent implements OnInit {
 
-  audits: any = [];
+  audits: Audit[] = [];
 
   constructor(private auditService: AuditService) {
   }
 
   ngOnInit() {
     this.auditService.getAll().subscribe(
-      res => this.audits = res,
+      res => {
+        this.audits = res;
+      },
       error1 => alert(JSON.stringify(error1)));
   }
 
