@@ -1,3 +1,33 @@
-<p>
-chart works!
-</p>
+<div class="container">
+  <br>
+  <div class="row text-center">
+    <div class="col-3">
+      <button (click)="visibledChartStations()" class="btn btn-circle btn-xl bg-warning btn-warning form-control">
+        <img src="/src/assets/images/railroad.png">
+      </button>
+    </div>
+    <div class="col-3">
+      <button (click)="visibledChartPeople()"
+              class="btn  btn-circle btn-xl bg-warning btn-outline-warning form-control">
+        <img src="/src/assets/images/circular-line-with-word-age-in-the-center.png">
+      </button>
+    </div>
+    <div class="col-3">
+      <button (click)="visibledChartTickets()"
+              class="btn  btn-circle btn-xl bg-warning btn-outline-warning form-control">
+        <img src="/src/assets/images/price.png">
+      </button>
+    </div>
+    <div class="col-3">
+      <button (click)="visibledChartProfit()"
+              class="btn  btn-circle btn-xl bg-warning btn-outline-warning form-control">
+        <img src="/src/assets/images/money.png">
+      </button>
+    </div>
+  </div>
+  <br>
+  <app-chart-stations *ngIf="visibleChartStation"></app-chart-stations>
+  <app-chart-profit *ngIf="visibleChartProfit"></app-chart-profit>
+  <app-chart-people *ngIf="visibleChartPeople"></app-chart-people>
+  <app-chart-tickets *ngIf="visibleChartTickets"></app-chart-tickets>
+</div>

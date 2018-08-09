@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col">
+    <h4 class="text-warning font-weight-bold">DATE FROM</h4>
+    <input type="date" [(ngModel)]="dateFrom" (ngModelChange)="build()" class="form-control">
+  </div>
+  <div class="col">
+    <h4 class="text-warning font-weight-bold" id="labelTo">DATE TO</h4>
+    <input type="date" [(ngModel)]="dateTo" (ngModelChange)="build()" class="form-control">
+  </div>
+</div>
+<br>
+<div [hidden]="!chart">
+  <canvas id="canvas">{{ chart }}</canvas>
+</div>
