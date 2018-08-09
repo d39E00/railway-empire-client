@@ -1,4 +1,14 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form" ngNativeValidate>
+  <datalist id="stationsList">
+    <div>
+      <option *ngFor=" let value of stationsList">{{value}}</option>
+    </div>
+  </datalist>
+  <datalist id="trainsList">
+    <div>
+      <option *ngFor=" let value of trainsList">{{value}}</option>
+    </div>
+  </datalist>
   <div class="row">
     <div class="col">
       <input type="text" placeholder="station departure" autocomplete="off" list="stationsList" name="stationDeparture"
