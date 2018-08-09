@@ -4,6 +4,7 @@ import {ScheduleService} from '../../service/schedule.service';
 import {Schedule} from '../../models/schedule';
 import {TrainService} from '../../service/train.service';
 import {StationService} from '../../service/station.service';
+import {swal} from 'ng2-sweetalert2';
 
 @Component({
   selector: 'app-add-schedule',
@@ -35,7 +36,15 @@ export class AddScheduleComponent implements OnInit {
     schedule.dateArrival = f.value.dateArrival !== '' ? f.value.dateArrival.replace('T', ' ') + ':00' : '';
     schedule.trainName = f.value.trainSchedule;
     this.scheduleService.add(schedule).subscribe(
-      data => alert('success'),
-      error => alert(JSON.stringify(error)));
+      data => {
+        console.log(data);
+        swal({title: 'Congratulations!', text: 'You add new schedule!', type: 'success'});
+      },
+      error => {
+        console.log(error);
+        swal({
+          title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+        });
+      });
   }
 }
