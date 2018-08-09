@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {AuthenticationService} from './authentication.service';
 
 @Injectable()
 export class UserService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private authService: AuthenticationService) {
   }
 
   URL_REGISTRATION = 'http://localhost:8000/registration';
@@ -14,27 +15,20 @@ export class UserService {
 
 
   login(user) {
+    this.authService.authorize(user);
     const body = 'username=' + user.username + '&password=' + user.password;
-    return this.httpClient.post(this.URL_LOGIN, body,
-      {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Basic ' + btoa(user.username + ':' + user.password),
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'X-Requested-With': 'XMLHttpRequest'
-        }, responseType: 'text'
-      });
+    return this.httpClient.post(this.URL_LOGIN, body, { headers: this.authService.getHeader(), responseType: 'text'});
   }
 
   registration(user) {
-    return this.httpClient.post(this.URL_REGISTRATION, user);
+    return this.httpClient.post(this.URL_REGISTRATION, user, { headers: this.authService.getHeader(), responseType: 'text'});
   }
 
   editProfile(user) {
-    return this.httpClient.put(this.URL_PROFILE_UPDATE, user);
+    return this.httpClient.put(this.URL_PROFILE_UPDATE, user, { headers: this.authService.getHeader(), responseType: 'text'});
   }
 
   getProfile() {
-    return this.httpClient.get(this.URL_PROFILE_GET);
+    return this.httpClient.get(this.URL_PROFILE_GET, { headers: this.authService.getHeader(), responseType: 'text'});
   }
 }

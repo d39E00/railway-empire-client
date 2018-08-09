@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {AuthenticationService} from './authentication.service';
 
 @Injectable()
 export class ScheduleService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private authService: AuthenticationService) {
   }
 
   URL_ADD_SCHEDULE = 'http://localhost:8000/schedule/add';
@@ -12,11 +13,11 @@ export class ScheduleService {
 
 
   add(schedule) {
-    return this.httpClient.post(this.URL_ADD_SCHEDULE, schedule);
+    return this.httpClient.post(this.URL_ADD_SCHEDULE, schedule, {headers: this.authService.getHeaderPost()});
   }
 
   getAll() {
-    return this.httpClient.get(this.URL_GET_ALL_SCHEDULE);
+    return this.httpClient.get(this.URL_GET_ALL_SCHEDULE, {headers: this.authService.getHeader(), responseType: 'text'});
   }
 
   delete(scheduleName) {
