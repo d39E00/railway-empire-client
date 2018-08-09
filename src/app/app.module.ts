@@ -38,6 +38,11 @@ import {AuditService} from './service/audit.service';
 import {TableEditItemScheduleComponent} from './edit-item/table-edit-item-schedule/table-edit-item-schedule.component';
 import {TableEditItemStationComponent} from './edit-item/table-edit-item-station/table-edit-item-station.component';
 import {TableEditItemTrainComponent} from './edit-item/table-edit-item-train/table-edit-item-train.component';
+import {AuthenticationService} from './service/authentication.service';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import {DataTableModule} from 'angular2-datatable';
+import {GoogleService} from './service/google.service';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -52,7 +57,7 @@ const appRoutes: Routes = [
   {path: 'audit', component: AuditComponent},
   {path: 'trips', component: TripComponent},
   // {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
-  {path: '', component: AuditComponent},
+  {path: '', component: LoginComponent},
   {path: '**', redirectTo: ''}
 ];
 
@@ -84,13 +89,18 @@ const appRoutes: Routes = [
     TableEditItemScheduleComponent,
     TableEditItemStationComponent,
     TableEditItemTrainComponent],
-  imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
+    MatTableModule,
+    MatPaginatorModule,
+    DataTableModule],
   bootstrap: [AppComponent],
   providers: [UserService,
     ScheduleService,
     TrainService,
     StationService,
-    AuditService]
+    AuditService,
+    AuthenticationService,
+    GoogleService]
 })
 export class AppModule {
 }
