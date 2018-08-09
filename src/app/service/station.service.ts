@@ -2,8 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
 import {Station} from '../models/station';
-import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
 
 @Injectable()
 export class StationService {
@@ -19,7 +17,7 @@ export class StationService {
   URL_FOR_AUTO_COMPLETE = 'http://localhost:8000/station/auto/stations';
 
   add(station) {
-    return this.httpClient.post(this.URL_ADD_STATION, station, {headers: this.authService.getHeader(), responseType: 'text'});
+    return this.httpClient.post<Station>(this.URL_ADD_STATION, station, {headers: this.authService.getHeaderPost()});
   }
 
   getDeleted() {
