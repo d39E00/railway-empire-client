@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {TrainService} from '../../service/train.service';
+import {Train} from '../../models/train';
 
 @Component({
   selector: 'app-add-train',
@@ -18,11 +19,10 @@ export class AddTrainComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    const train = {
-      trainName: f.value.cntSeats,
-      cntCarriage: f.value.cntCarriage,
-      cntSeats: f.value.train
-    };
+    const train = new Train();
+    train.trainName = f.value.train;
+    train.cntCarriage = f.value.cntCarriage;
+    train.cntSeats = this.cntSeats;
     this.trainService.add(train).subscribe(
       res => alert(JSON.stringify(res)),
       error => alert(JSON.stringify(error)));
