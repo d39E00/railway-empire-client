@@ -43,6 +43,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {DataTableModule} from 'angular2-datatable';
 import {GoogleService} from './service/google.service';
+import {ChartProfitComponent} from './chart/chart-profit/chart-profit.component';
+import {ChartPeopleComponent} from './chart/chart-people/chart-people.component';
+import {ChartTicketsComponent} from './chart/chart-tickets/chart-tickets.component';
+import {ChartService} from './service/chart.service';
+import {ChartStationsComponent} from './chart/chart-stations/chart-stations.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -88,7 +93,11 @@ const appRoutes: Routes = [
     ScheduleByDatesTrainComponent,
     TableEditItemScheduleComponent,
     TableEditItemStationComponent,
-    TableEditItemTrainComponent],
+    TableEditItemTrainComponent,
+    ChartProfitComponent,
+    ChartPeopleComponent,
+    ChartTicketsComponent,
+    ChartStationsComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatPaginatorModule,
@@ -100,7 +109,8 @@ const appRoutes: Routes = [
     StationService,
     AuditService,
     AuthenticationService,
-    GoogleService]
+    GoogleService,
+    ChartService]
 })
 export class AppModule {
 }
