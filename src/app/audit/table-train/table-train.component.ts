@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TrainService} from '../../service/train.service';
 import {Train} from '../../models/train';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-table-train',
@@ -17,12 +18,26 @@ export class TableTrainComponent implements OnInit {
   ngOnInit() {
     this.trainService.getDeleted().subscribe(
       res => this.trains = res,
-      error1 => alert(JSON.stringify(error1)));
+      error => {
+        console.log(error);
+        swal({
+          title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+        });
+      });
   }
 
   reestablishTrain(trainName, i) {
     this.trainService.reestablishTrain(trainName).subscribe(
-      res => this.trains.splice(i, 1),
-      error1 => alert(JSON.stringify(error1)));
+      res => {
+        swal({title: 'Congratulations!', text: 'You reestablish station!', type: 'success'});
+        console.log(res);
+        this.trains.splice(i, 1);
+      },
+      error => {
+        console.log(error);
+        swal({
+          title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+        });
+      });
   }
 }

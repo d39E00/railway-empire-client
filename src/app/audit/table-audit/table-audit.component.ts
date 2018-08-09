@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuditService} from '../../service/audit.service';
 import {Audit} from '../../models/audit';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-table-audit',
@@ -19,10 +20,23 @@ export class TableAuditComponent implements OnInit {
       res => {
         this.audits = res;
       },
-      error1 => alert(JSON.stringify(error1)));
+      error => {
+        console.log(error);
+        swal({
+          title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+        });
+      });
   }
 
   auditInfo(i) {
-    alert(JSON.stringify(this.audits[i]));
+    swal({
+      title: 'AUDIT HISTORY',
+      html:
+      '<input id=\'swal-input1\' class=\'swal2-input\' value=\'' + this.audits[i].userFirstName + ' ' + this.audits[i].userLastName + '\' disabled>' +
+      '<input id=\'swal-input2\' class=\'swal2-input\' value=\'' + this.audits[i].userLogin + '\' disabled>' +
+      '<input id=\'swal-input3\' class=\'swal2-input\' value=\'' + (this.audits[i].oldValue == null ? '-' : this.audits[i].oldValue) + '\' disabled>' +
+      '<textarea id=\'swal-input3\' class=\'swal2-input\' disabled style=\'height: 100px\'>' + this.audits[i].newValue + '</textarea>',
+      type: 'info'
+    });
   }
 }
