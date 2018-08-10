@@ -30,15 +30,15 @@ export class StationService {
   }
 
   getAll() {
-    return this.httpClient.get(this.URL_GET_ALL, {headers: this.authService.getHeader(), responseType: 'text'});
+    return this.httpClient.get<Station[]>(this.URL_GET_ALL, {headers: this.authService.getHeader()});
   }
 
   edit(station) {
-    return this.httpClient.put(this.URL_UPDATE_STATION, station, {headers: this.authService.getHeader(), responseType: 'text'});
+    return this.httpClient.put(this.URL_UPDATE_STATION, station, {headers: this.authService.getHeaderPost()});
   }
 
   delete(station) {
-    return this.httpClient.delete(this.URL_DELETE_STATION + station, {headers: this.authService.getHeader(), responseType: 'text'});
+    return this.httpClient.delete(this.URL_DELETE_STATION + station, {headers: this.authService.getHeader()});
   }
 
   getAllForAutoComplete() {

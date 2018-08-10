@@ -31,15 +31,15 @@ export class TrainService {
   }
 
   getAll() {
-    return this.httpClient.get(this.URL_GET_ALL, {headers: this.authService.getHeader(), responseType: 'text'});
+    return this.httpClient.get<Train[]>(this.URL_GET_ALL, {headers: this.authService.getHeader()});
   }
 
   edit(train) {
-    return this.httpClient.put(this.URL_EDIT_TRAIN, train, {headers: this.authService.getHeader(), responseType: 'text'});
+    return this.httpClient.put(this.URL_EDIT_TRAIN, train, {headers: this.authService.getHeaderPost()});
   }
 
   delete(train) {
-    return this.httpClient.delete(this.URL_DELETE_TRAIN + train, {headers: this.authService.getHeader(), responseType: 'text'});
+    return this.httpClient.delete(this.URL_DELETE_TRAIN + train, {headers: this.authService.getHeader()});
   }
 
   getAllForAutoComplete() {
