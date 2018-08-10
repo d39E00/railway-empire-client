@@ -14,13 +14,13 @@
     <td>{{schedule.trainName}}</td>
     <td> {{schedule.stationDepartureName}}</td>
     <td> {{schedule.stationArrivalName}}</td>
-    <td>{{schedule.dateDeparture}}</td>
-    <td> {{schedule.dateArrival}}</td>
+    <td>{{schedule.dateDeparture.replace('.0','')}}</td>
+    <td> {{schedule.dateArrival.replace('.0','')}}</td>
     <td>
       <button class='btn btn-outline-warning editSchedule' (click)="edit(schedule, i)"><img
         src='/src/assets/images/edit.png'>
       </button>
-      <button class='btn btn-outline-warning deleteSchedule' (click)="delete(schedule.name, i)"><img
+      <button class='btn btn-outline-warning deleteSchedule' (click)="delete(i)"><img
         src='/src/assets/images/rubbish-bin.png'></button>
       <button class='btn btn-outline-warning openScheduleTicket' (click)="info(i)">
         <img src='/src/assets/images/magnifier.png'></button>

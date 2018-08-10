@@ -1,4 +1,5 @@
 export class Schedule {
+  id: number;
   stationDepartureName: string;
   stationArrivalName: string;
   dateDeparture: string;
