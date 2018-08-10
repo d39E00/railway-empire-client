@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {User} from '../models/user';
 import {UserService} from '../service/user.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registration',
@@ -23,11 +23,15 @@ export class RegistrationComponent {
     };
     this.userService.registration(user).subscribe(
       response => {
-        alert('Success');
         console.log(response);
+        swal({
+          title: 'Congratulations!', text: 'You have been registered successfully!', type: 'success'
+        });
       },
-      err => {
-        alert(JSON.stringify(err));
+      error => {
+        swal({
+          title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+        });
       });
   }
 }
