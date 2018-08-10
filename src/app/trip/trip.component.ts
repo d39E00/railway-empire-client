@@ -12,7 +12,7 @@ export class TripComponent implements OnInit {
   constructor(private ticketService: TicketService) {
   }
 
-  tickets: Ticket = [];
+  tickets: Ticket[] = [];
 
   ngOnInit() {
     this.ticketService.getTickets().subscribe(res => {
