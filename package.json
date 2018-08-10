@@ -22,6 +22,7 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "@types/googlemaps": "^3.30.11",
     "angular2-datatable": "^0.6.0",
     "chart": "^0.1.2",
     "chart.js": "^2.7.2",
