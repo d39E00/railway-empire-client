@@ -7,7 +7,7 @@ import swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css', './railway.css']
+  styleUrls: ['./login.component.css']
 })
 
 export class LoginComponent {
@@ -18,11 +18,13 @@ export class LoginComponent {
     const user = {username: f.value.username, password: f.value.password};
     this.userService.login(user).subscribe(
       response => {
-        swal({title: 'hey', text: 'beach', type: 'success'});
-        this.router.navigateByUrl('/audit');
+        console.log(response);
+        this.router.navigateByUrl('/home');
       },
-      err => {
-        alert(JSON.stringify(err));
+      error => {
+        swal({
+          title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+        });
       });
   }
 }
