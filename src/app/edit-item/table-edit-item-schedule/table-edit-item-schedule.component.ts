@@ -22,9 +22,8 @@ export class TableEditItemScheduleComponent implements OnInit {
       error1 => alert(JSON.stringify(error1)));
   }
 
-  delete(i) {
-    const scheduleName = this.schedules[i].id;
-    this.scheduleService.delete(scheduleName).subscribe(
+  delete(id, i) {
+    this.scheduleService.delete(id).subscribe(
       res => {
         this.schedules.splice(i, 1);
         swal({title: 'Congratulations!', text: 'You delete schedule!', type: 'success'});
@@ -79,7 +78,7 @@ export class TableEditItemScheduleComponent implements OnInit {
     }).catch(swal.noop);
   }
 
-  info(i) {
+  info(id) {
     // TODO
   }
 }
