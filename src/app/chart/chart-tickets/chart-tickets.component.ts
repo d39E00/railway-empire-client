@@ -31,7 +31,7 @@ export class ChartTicketsComponent implements OnInit {
           this.colors.push(randomColor());
         }
         this.chart = new Chart('canvas', {
-          type: 'line',
+          type: 'doughnut',
           data: {
             labels: this.labels,
             datasets: [
