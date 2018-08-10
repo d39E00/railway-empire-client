@@ -48,6 +48,7 @@ import {ChartPeopleComponent} from './chart/chart-people/chart-people.component'
 import {ChartTicketsComponent} from './chart/chart-tickets/chart-tickets.component';
 import {ChartService} from './service/chart.service';
 import {ChartStationsComponent} from './chart/chart-stations/chart-stations.component';
+import {HomeComponent} from './home/home.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
   {path: 'chart', component: ChartComponent},
   {path: 'audit', component: AuditComponent},
   {path: 'trips', component: TripComponent},
+  {path: 'home', component: HomeComponent},
   // {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
   {path: '', component: LoginComponent},
   {path: '**', redirectTo: ''}
@@ -97,7 +99,8 @@ const appRoutes: Routes = [
     ChartProfitComponent,
     ChartPeopleComponent,
     ChartTicketsComponent,
-    ChartStationsComponent],
+    ChartStationsComponent,
+    HomeComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatPaginatorModule,
