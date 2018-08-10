@@ -1,21 +1,3 @@
-.content{
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-   height: 1080px;
-    /* width: 1920px; */
-    margin: auto;
-    background: #280744;
-    overflow: hidden !important;
-}
-/* .background {
-    position: absolute;
-    height: 1080px;
-    width: 1920px; */
-    /* background: url(/static/images/bg.png) top center repeat-x;
-    background: url(https://docs.google.com/uc?export=download&id=0B2PO2Lr7Bv2QSXhkaG1VaEhSTjA) top center repeat-x;
-    background-size: contain;
-} */
 .form {
    width: 360px;
     padding: 5% 0 0;

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +18,7 @@ export class LoginComponent {
     const user = {username: f.value.username, password: f.value.password};
     this.userService.login(user).subscribe(
       response => {
-        alert(JSON.stringify(response));
-        alert('Success');
-        console.log(response);
+        swal({title: 'hey', text: 'beach', type: 'success'});
         this.router.navigateByUrl('/audit');
       },
       err => {
