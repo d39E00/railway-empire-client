@@ -50,6 +50,7 @@ import {ChartService} from './service/chart.service';
 import {ChartStationsComponent} from './chart/chart-stations/chart-stations.component';
 import {HomeComponent} from './home/home.component';
 import {TicketService} from './service/ticket.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -105,7 +106,8 @@ const appRoutes: Routes = [
   imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatPaginatorModule,
-    DataTableModule],
+    DataTableModule,
+    NgbModule.forRoot()],
   bootstrap: [AppComponent],
   providers: [UserService,
     ScheduleService,
