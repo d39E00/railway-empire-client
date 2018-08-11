@@ -88,5 +88,24 @@ export class ContentSeatsComponent implements OnInit {
 
   bookingTicket() {
     alert(this.currentSeat + ' ' + this.currentCarriage);
+    if (this.currentSeat !== 0) {
+      const seat = new SeatEntity();
+      seat.carriage = this.currentCarriage;
+      seat.seat = this.currentSeat;
+      this.ticketService.bookTicket(seat).subscribe(res => {
+        swal({
+          title: 'Congratulations!', text: 'You book ticket', type: 'success'
+        });
+      }, error => {
+        console.log(error);
+        swal({
+          title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+        });
+      });
+    } else {
+      swal({
+        title: 'Oops..', text: 'You didn\'t choose seat!', type: 'warning'
+      });
+    }
   }
 }
