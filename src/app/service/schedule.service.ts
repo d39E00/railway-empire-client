@@ -13,6 +13,11 @@ export class ScheduleService {
   URL_GET_ALL_SCHEDULE = 'http://localhost:8000/schedule/all';
   URL_DELETE_SCHEDULE = 'http://localhost:8000/schedule/delete/';
   URL_UPDATE_SCHEDULE = 'http://localhost:8000/schedule/update';
+  URL_GET_BY_ALL_PARAMETERS = 'http://localhost:8000/schedule/direct';
+  URL_GET_BY_STATIONS_AND_DATES = 'http://localhost:8000/schedule/directByStations';
+  URL_GET_BY_DATES = 'http://localhost:8000/schedule/directByDates';
+  URL_GET_BY_TRAIN_AND_DATES = 'http://localhost:8000/schedule/directByTrain';
+
 
 
   add(schedule) {
@@ -34,4 +39,19 @@ export class ScheduleService {
   info(schedule) {
   }
 
+  getByAllParameters(schedule) {
+    return this.httpClient.post<Schedule[]>(this.URL_GET_BY_ALL_PARAMETERS, schedule, {headers: this.authService.getHeaderPost()});
+  }
+
+  getByStationsAndDates(schedule) {
+    return this.httpClient.post<Schedule[]>(this.URL_GET_BY_STATIONS_AND_DATES, schedule, {headers: this.authService.getHeaderPost()});
+  }
+
+  getByDates(schedule) {
+    return this.httpClient.post<Schedule[]>(this.URL_GET_BY_DATES, schedule, {headers: this.authService.getHeaderPost()});
+  }
+
+  getByDatesAndTrain(schedule) {
+    return this.httpClient.post<Schedule[]>(this.URL_GET_BY_TRAIN_AND_DATES, schedule, {headers: this.authService.getHeaderPost()});
+  }
 }
