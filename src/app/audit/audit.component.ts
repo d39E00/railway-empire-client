@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AuditComponent implements OnInit {
 
-  visibleTrain = false;
+  visibleTrain = true;
   visibleStation = false;
   visibleAudit = false;
 
