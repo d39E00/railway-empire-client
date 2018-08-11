@@ -52,6 +52,8 @@ import {HomeComponent} from './home/home.component';
 import {TicketService} from './service/ticket.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TicketComponent} from './ticket/ticket.component';
+import {FooterSeatsComponent} from './ticket/footer-seats/footer-seats.component';
+import {ContentSeatsComponent} from './ticket/content-seats/content-seats.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -105,7 +107,9 @@ const appRoutes: Routes = [
     ChartTicketsComponent,
     ChartStationsComponent,
     HomeComponent,
-    TicketComponent],
+    TicketComponent,
+    FooterSeatsComponent,
+    ContentSeatsComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatPaginatorModule,
