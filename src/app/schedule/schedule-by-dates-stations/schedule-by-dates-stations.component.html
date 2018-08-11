@@ -1,48 +1,59 @@
-<header class="masthead" style="background-image: url('/src/assets/images/bg.png')">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <form class="form-horizontal login_box align-items-center" #f="ngForm" (ngSubmit)="onSubmit(f)"
-                ngNativeValidate>
-            <div class="row">
-              <div class="col form-group">
-                <label class="text-warning font-weight-bold">FROM</label>
-                <input type="text" class="form-control text-dark text-xl-center" placeholder="DEPARTURE STATION"
-                       name="stationDeparture" ngModel #stationDeparture="ngModel" required autocomplete="off"
-                       list="stationsList">
-              </div>
-              <div class="col-1"></div>
-              <div class="col form-group">
-                <label class="text-warning font-weight-bold">TO</label>
-                <input type="text" class="form-control text-center text-dark" placeholder="ARRIVAL STATION"
-                       name="stationArrival" ngModel #stationArrival="ngModel" required autocomplete="off"
-                       list="stationsList">
-              </div>
-              <div class="col-1"></div>
-              <div class="col form-group">
-                <label class="text-warning font-weight-bold">DATE DEPARTURE</label>
-                <input type="date" class="form-control text-center" width="50" name="dateDeparture"
-                       ngModel #dateDeparture="ngModel" required>
-              </div>
-              <div class="col-1"></div>
-              <div class="col form-group">
-                <label class="text-warning font-weight-bold">DATE ARRIVAL</label>
-                <input type="date" class="form-control text-center" width="50" name="dateArrival"
-                       ngModel #dateArrival="ngModel" required>
-              </div>
+<div class="container bgRailway">
+  <datalist id="stationsList">
+    <div>
+      <option *ngFor=" let value of stationsList">{{value}}</option>
+    </div>
+  </datalist>
+  <datalist id="trainsList">
+    <div>
+      <option *ngFor=" let value of trainsList">{{value}}</option>
+    </div>
+  </datalist>
+  <div class="row">
+    <div class="col-lg-11 mx-auto">
+      <div class="site-heading">
+        <form class="form-horizontal login_box align-items-center" #f="ngForm" (ngSubmit)="onSubmit(f)"
+              ngNativeValidate>
+          <div class="row">
+            <div class="col form-group">
+              <label class="text-warning font-weight-bold">FROM</label>
+              <input type="text" class="form-control text-dark text-xl-center" placeholder="DEPARTURE STATION"
+                     name="stationDeparture" ngModel #stationDeparture="ngModel" required autocomplete="off"
+                     list="stationsList">
             </div>
-            <div id="checkBoxId">
-              <input type="checkbox" id="with transfer" class="text-warning font-weight-normal">
-              <label class="text-warning font-weight-normal">with transfer</label>
+            <div class="col-1"></div>
+            <div class="col form-group">
+              <label class="text-warning font-weight-bold">TO</label>
+              <input type="text" class="form-control text-center text-dark" placeholder="ARRIVAL STATION"
+                     name="stationArrival" ngModel #stationArrival="ngModel" required autocomplete="off"
+                     list="stationsList">
             </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-lg btn-outline-warning">search schedule
-              </button>
+          </div>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col form-group">
+              <label class="text-warning font-weight-bold">DATE DEPARTURE</label>
+              <input type="date" class="form-control text-center" width="50" name="dateDeparture"
+                     ngModel #dateDeparture="ngModel" required>
             </div>
-          </form>
-        </div>
+            <div class="col-1"></div>
+            <div class="col form-group">
+              <label class="text-warning font-weight-bold">DATE ARRIVAL</label>
+              <input type="date" class="form-control text-center" width="50" name="dateArrival"
+                     ngModel #dateArrival="ngModel" required>
+            </div>
+            <div class="col-1"></div>
+          </div>
+          <div class="text-center align-items-center">
+            <input type="checkbox" class="text-warning">
+            <label class="text-warning">with transfer</label>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-lg btn-outline-warning">search schedule
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-</header>
+</div>
