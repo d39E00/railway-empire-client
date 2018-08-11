@@ -1,5 +1,6 @@
 export class Ticket {
   id: number;
+
   userFirstName: string;
 
   userLastName: string;

@@ -5,4 +5,5 @@ export class Schedule {
   dateDeparture: string;
   dateArrival: string;
   trainName: string;
+  price: number;
 }
