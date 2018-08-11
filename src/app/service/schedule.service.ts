@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
 import {Schedule} from '../models/schedule';
+import {ScheduleTransfer} from '../models/schedule.transfer';
 
 @Injectable()
 export class ScheduleService {
@@ -17,7 +18,7 @@ export class ScheduleService {
   URL_GET_BY_STATIONS_AND_DATES = 'http://localhost:8000/schedule/directByStations';
   URL_GET_BY_DATES = 'http://localhost:8000/schedule/directByDates';
   URL_GET_BY_TRAIN_AND_DATES = 'http://localhost:8000/schedule/directByTrain';
-
+  URL_GET_TRANSFER = 'http://localhost:8000/schedule/transferByStations';
 
 
   add(schedule) {
@@ -53,5 +54,9 @@ export class ScheduleService {
 
   getByDatesAndTrain(schedule) {
     return this.httpClient.post<Schedule[]>(this.URL_GET_BY_TRAIN_AND_DATES, schedule, {headers: this.authService.getHeaderPost()});
+  }
+
+  getTransfer(schedule) {
+    return this.httpClient.post<ScheduleTransfer[]>(this.URL_GET_TRANSFER, schedule, {headers: this.authService.getHeaderPost()});
   }
 }
