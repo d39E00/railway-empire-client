@@ -51,6 +51,7 @@ import {ChartStationsComponent} from './chart/chart-stations/chart-stations.comp
 import {HomeComponent} from './home/home.component';
 import {TicketService} from './service/ticket.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {TicketComponent} from './ticket/ticket.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
   {path: 'audit', component: AuditComponent},
   {path: 'trips', component: TripComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'ticket', component: TicketComponent},
   // {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
   {path: '', component: LoginComponent},
   {path: '**', redirectTo: ''}
@@ -102,7 +104,8 @@ const appRoutes: Routes = [
     ChartPeopleComponent,
     ChartTicketsComponent,
     ChartStationsComponent,
-    HomeComponent],
+    HomeComponent,
+    TicketComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatPaginatorModule,
