@@ -5,6 +5,7 @@ import {TrainService} from '../../service/train.service';
 import {ScheduleService} from '../../service/schedule.service';
 import {Schedule} from '../../models/schedule';
 import swal from 'sweetalert2';
+import {ScheduleTransfer} from '../../models/schedule.transfer';
 
 @Component({
   selector: 'app-schedule-by-dates-stations',
@@ -16,7 +17,11 @@ export class ScheduleByDatesStationsComponent implements OnInit {
   stationsList: any = [];
   trainsList: any = [];
   schedules: Schedule[] = [];
+  schedulesTransfer: ScheduleTransfer[] = [];
+  transfer = false;
   @Output() messageEvent = new EventEmitter<Schedule[]>();
+  @Output() messageTransferEvent = new EventEmitter<ScheduleTransfer[]>();
+
 
 
   constructor(private scheduleService: ScheduleService, private trainService: TrainService, private stationService: StationService) {
@@ -46,5 +51,17 @@ export class ScheduleByDatesStationsComponent implements OnInit {
         title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
       });
     });
+    if (this.transfer) {
+      alert('hey');
+      this.scheduleService.getTransfer(schedule).subscribe(res => {
+        this.schedulesTransfer = res;
+        this.messageTransferEvent.emit(this.schedulesTransfer);
+      }, error => {
+        console.log(error);
+        swal({
+          title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+        });
+      });
+    }
   }
 }

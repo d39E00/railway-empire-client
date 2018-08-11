@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Schedule} from '../models/schedule';
+import {ScheduleTransfer} from '../models/schedule.transfer';
 
 @Component({
   selector: 'app-schedule',
@@ -9,6 +10,8 @@ import {Schedule} from '../models/schedule';
 export class ScheduleComponent implements OnInit {
 
   @Input() schedules: Schedule[];
+  @Input() schedulesTransfer: ScheduleTransfer[];
+
 
   constructor() {
   }
@@ -20,10 +23,16 @@ export class ScheduleComponent implements OnInit {
     this.schedules = $event;
   }
 
+  receiveMessageTransfer($event) {
+    this.schedulesTransfer = $event;
+  }
+
   getDelayBetweenTwoDates(dateDeparture, dateArrival) {
   }
 
   findTicket(schedule, i) {
+  }
 
+  findTicketTransfer(schedule) {
   }
 }

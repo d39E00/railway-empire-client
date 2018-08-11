@@ -31,7 +31,7 @@ export class ScheduleByDatesTrainComponent implements OnInit {
     schedule.trainName = f.value.trainName;
     schedule.dateDeparture = f.value.dateDeparture;
     schedule.dateArrival = f.value.dateArrival;
-    this.scheduleService.getByDates(schedule).subscribe(res => {
+    this.scheduleService.getByDatesAndTrain(schedule).subscribe(res => {
       this.schedules = res;
       this.messageEvent.emit(this.schedules);
     }, error => {

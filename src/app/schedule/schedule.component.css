@@ -2,7 +2,11 @@ ngb-carousel {
   outline: none;
 }
 
-table {
+.tableRailway {
   margin-top: 5%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.tableRailwayTransfer {
+  background: rgba(0, 0, 0, 0.6);
 }

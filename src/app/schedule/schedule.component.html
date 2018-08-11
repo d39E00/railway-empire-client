@@ -8,7 +8,7 @@
   </ng-template>
   <ng-template ngbSlide>
     <app-schedule-by-dates-stations
-      (messageEvent)="receiveMessage($event)">
+      (messageEvent)="receiveMessage($event)" (messageTransferEvent)="receiveMessageTransfer($event)">
     </app-schedule-by-dates-stations>
   </ng-template>
   <ng-template ngbSlide>
@@ -22,7 +22,7 @@
     </app-schedule-by-dates-train>
   </ng-template>
 </ngb-carousel>
-<table class="table table-hover">
+<table class="table table-hover tableRailway">
   <tbody class="text-warning text-center">
   <tr *ngFor="let schedule of schedules; let i=index">
     <th scope='row'>
@@ -71,15 +71,136 @@
     </td>
     <td>
       <br>
-      <div style='margin-left: 50%'>
+      <div style='margin-left: 50%' *ngIf="schedule.price!=0">
         <label>
           {{ schedule.price}}
         </label>
       </div>
       <button type='button' style='margin-left: 50%' class='btn btn-lg btn-outline-warning'
-              (click)="findTicket(schedule, i)">
-        FIND Ticket
+              (click)="findTicket(schedule, i)" *ngIf="schedule.price!=0">
+        FIND TICKET
       </button>
+      <div *ngIf="schedule.price==0">
+        <label class="text-warning font-weight-bold">TRAIN ARRIVED ..</label>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<table class="table table-hover tableRailwayTransfer">
+  <tbody class="text-warning text-center">
+  <tr *ngFor="let schedule of schedulesTransfer; let i=index">
+    <th scope='row'>
+      <div>
+        <div>
+          <img src='/src/assets/images/trainIcoWarn.png'></div>
+        <label class='font-weight-normal'>
+          {{schedule.trainDepartureName}}
+        </label>
+      </div>
+    </th>
+    <td>
+      <br>
+      <div>
+        <label class='font-weight-normal'>
+          {{schedule.dateDeparture}}
+        </label>
+      </div>
+      <div>
+        <label class='font-weight-bold'>
+          {{schedule.stationDepartureName}}
+        </label>
+      </div>
+    </td>
+    <td>
+      <div>
+        <label class='font-weight-light'>
+          {{ getDelayBetweenTwoDates(schedule.dateDeparture, schedule.dateArrival)}}
+        </label>
+      </div>
+      <img src='/src/assets/images/arrow-13-xxl.png' width='50'>
+    </td>
+    <td>
+      <br>
+      <div>
+        <label class='font-weight-normal'>
+          {{schedule.dateIntermediateDeparture}}
+        </label>
+      </div>
+      <div>
+        <label class='font-weight-bold'>
+          {{schedule.stationIntermediateName}}
+        </label>
+      </div>
+    </td>
+    <td scope='row'>
+      <div>
+        <img src='/src/assets/images/hourglass.png'>
+      </div>
+      <br>
+      <label>
+        {{getDelayBetweenTwoDates(schedule.dateIntermediateDeparture, schedule.dateIntermediateArrival)}}
+      </label>
+      <div>
+        <img src='/src/assets/images/share-option.png'>
+      </div>
+    <th scope='row'>
+      <div>
+        <div>
+          <img src='/src/assets/images/trainIcoWarn.png'>
+        </div>
+        <label class='font-weight-normal'>
+          {{schedule.trainArrivalName}}
+        </label>
+      </div>
+    </th>
+    <td>
+      <br>
+      <div>
+        <label class='font-weight-normal'>
+          {{schedule.dateIntermediateArrival}}
+        </label>
+      </div>
+      <div>
+        <label class='font-weight-bold'>
+          {{schedule.stationIntermediateName}}
+        </label>
+      </div>
+    </td>
+    <td>
+      <div>
+        <label class='font-weight-light'>
+          {{getDelayBetweenTwoDates(schedule.dateDeparture, schedule.dateArrival)}}
+        </label>
+      </div>
+      <img src='/src/assets/images/arrow-13-xxl.png' width='50'>
+    </td>
+    <td>
+      <br>
+      <div>
+        <label class='font-weight-normal'>
+          {{schedule.dateArrival }}
+        </label>
+      </div>
+      <div>
+        <label class='font-weight-bold'>
+          {{schedule.stationArrivalName}}
+        </label>
+      </div>
+    </td>
+    <td>
+      <br>
+      <div *ngIf="schedule.price!=0">
+        <label>
+          {{schedule.price }}
+        </label>
+        <button class='btn btn-lg btn-outline-warning' (click)="findTicketTransfer(schedule)">
+          FIND TICKET
+        </button>
+      </div>
+      <label *ngIf="schedule.price==0" class="font-weight-bold text-warning">
+        TRAIN ARRIVED ..
+      </label>
     </td>
   </tr>
   </tbody>
