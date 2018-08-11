@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Schedule} from '../models/schedule';
 
 @Component({
   selector: 'app-schedule',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScheduleComponent implements OnInit {
 
-  constructor() { }
+  @Input() schedules: Schedule[];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  receiveMessage($event) {
+    this.schedules = $event;
+  }
+
+  getDelayBetweenTwoDates(dateDeparture, dateArrival) {
+  }
+
+  findTicket(schedule, i) {
+
+  }
 }

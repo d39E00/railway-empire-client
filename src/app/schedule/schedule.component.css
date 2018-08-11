@@ -1,3 +1,8 @@
-body{
-  background: red
+ngb-carousel {
+  outline: none;
+}
+
+table {
+  margin-top: 5%;
+  background: rgba(0,0,0,0.6);
 }
