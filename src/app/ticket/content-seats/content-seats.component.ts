@@ -87,12 +87,11 @@ export class ContentSeatsComponent implements OnInit {
   }
 
   bookingTicket() {
-    alert(this.currentSeat + ' ' + this.currentCarriage);
     if (this.currentSeat !== 0) {
       const seat = new SeatEntity();
       seat.carriage = this.currentCarriage;
       seat.seat = this.currentSeat;
-      this.ticketService.bookTicket(seat).subscribe(res => {
+      this.ticketService.bookTicket(seat, this.ID).subscribe(res => {
         swal({
           title: 'Congratulations!', text: 'You book ticket', type: 'success'
         });
