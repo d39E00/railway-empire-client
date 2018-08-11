@@ -1,0 +1,132 @@
+<ngb-carousel data-interval="false" [showNavigationIndicators]="false" [showNavigationArrows]="false">
+  <ng-template ngbSlide>
+    <div class="text-xl-center">
+      <h3 id="carriageNumber" class="font-weight-bold text-warning text-center">Carriage №{{currentCarriage}}</h3>
+    </div>
+    <div id="holder">
+      <ul id="place">
+        <li [ngClass]="{'selectedSeat': booking[1], 'selectingSeat': selecting[1], 'seat': nonSelecting[1]}"
+            style="top:0px; left: 0px" (click)="toggle(1)">
+          <a title="1" style="margin-left: 0px">1</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[4], 'selectingSeat': selecting[4], 'seat': nonSelecting[4]}"
+            style="top:0px; left: 45px" (click)="toggle(4)">
+          <a title="4" style="margin-left: 0px">4</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[7], 'selectingSeat': selecting[7], 'seat': nonSelecting[7]}"
+            style="top:0px; left: 90px" (click)="toggle(7)">
+          <a title="7" style="margin-left: 0px">7</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[10], 'selectingSeat': selecting[10], 'seat': nonSelecting[10]}"
+            style="top:0px; left: 135px" (click)="toggle(10)">
+          <a title="10" style="margin-left: 0px">10</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[13], 'selectingSeat': selecting[13], 'seat': nonSelecting[13]}"
+            style="top:0px; left: 180px" (click)="toggle(13)">
+          <a title="13" style="margin-left: 0px">13</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[16], 'selectingSeat': selecting[16], 'seat': nonSelecting[16]}"
+            style="top:0px; left: 225px" (click)="toggle(16)">
+          <a title="16" style="margin-left: 0px">16</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[19], 'selectingSeat': selecting[19], 'seat': nonSelecting[19]}"
+            style="top:0px; left: 270px" (click)="toggle(19)">
+          <a title="19" style="margin-left: 0px">19</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[22], 'selectingSeat': selecting[22], 'seat': nonSelecting[22]}"
+            style="top:0px; left: 315px" (click)="toggle(22)">
+          <a title="22" style="margin-left: 0px">22</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[25], 'selectingSeat': selecting[25], 'seat': nonSelecting[25]}"
+            style="top:0px; left: 360px" (click)="toggle(25)">
+          <a title="25" style="margin-left: 0px">25</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[28], 'selectingSeat': selecting[28], 'seat': nonSelecting[28]}"
+            style="top:0px; left: 405px" (click)="toggle(28)">
+          <a title="28" style="margin-left: 0px">28</a>
+        </li>
+
+        <li [ngClass]="{'selectedSeat': booking[2], 'selectingSeat': selecting[2], 'seat': nonSelecting[2]}"
+            style="top:45px; left: 0px" (click)="toggle(2)">
+          <a title="2" style="margin-left: 0px">2</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[5], 'selectingSeat': selecting[5], 'seat': nonSelecting[5]}"
+            style="top:45px; left: 45px" (click)="toggle(5)">
+          <a title="5">5</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[8], 'selectingSeat': selecting[8], 'seat': nonSelecting[8]}"
+            style="top:45px; left: 90px" (click)="toggle(8)">
+          <a title="8">8</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[11], 'selectingSeat': selecting[11], 'seat': nonSelecting[11]}"
+            style="top:45px; left: 135px" (click)="toggle(11)">
+          <a title="11">11</a>
+        </li>
+        <li [ngClass]="{'selectedSeat': booking[14], 'selectingSeat': selecting[14], 'seat': nonSelecting[14]}"
+            style="top:45px; left: 180px" (click)="toggle(14)">
+          <a title="14">14</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:45px; left: 225px" (click)="toggle(17)">
+          <a title="17">17</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:45px; left: 270px" (click)="toggle(20)">
+          <a title="20">20</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:45px; left: 315px" (click)="toggle(23)">
+          <a title="23">23</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:45px; left: 360px" (click)="toggle(26)">
+          <a title="26">26</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:45px; left: 405px" (click)="toggle(29)">
+          <a title="29">29</a>
+        </li>
+
+        <li class="seat row-0 col-0" style="top:90px; left: 0px" (click)="toggle(3)">
+          <a title="3" style="margin-left: 0px">3</a>
+        </li>
+        <li class="seat row-0 col-2" style="top:90px; left: 45px" (click)="toggle(6)">
+          <a title="6">6</a>
+        </li>
+        <li class="seat row-0 col-3" style="top:90px; left: 90px" (click)="toggle(9)">
+          <a title="9">9</a>
+        </li>
+        <li class="seat row-0 col-4" style="top:90px; left: 135px" (click)="toggle(12)">
+          <a title="12">12</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:90px; left: 180px" (click)="toggle(15)">
+          <a title="15">15</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:90px; left: 225px" (click)="toggle(18)">
+          <a title="18">18</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:90px; left: 270px" (click)="toggle(21)">
+          <a title="21">21</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:90px; left: 315px" (click)="toggle(24)">
+          <a title="24">24</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:90px; left: 360px" (click)="toggle(27)">
+          <a title="27">27</a>
+        </li>
+        <li class="seat row-0 col-5" style="top:90px; left: 405px" (click)="toggle(30)">
+          <a title="30">30</a>
+        </li>
+      </ul>
+    </div>
+    <div style="margin-left: 46%; margin-bottom: 5%; margin-top: -5%">
+      <button (click)="bookingTicket()" class="btn bg-light btn-outline-warning">
+        BOOK TICKET
+      </button>
+    </div>
+  </ng-template>
+</ngb-carousel>
+<a class="carousel-control-prev" role="button" (click)="left()">
+  <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+  <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" role="button" (click)="right()">
+  <span aria-hidden="true" class="carousel-control-next-icon"></span>
+  <span class="sr-only">Previous</span>
+</a>
+
