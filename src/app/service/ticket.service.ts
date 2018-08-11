@@ -12,6 +12,7 @@ export class TicketService {
 
   URL_GET_TICKETS = 'http://localhost:8000/userMap/show';
   URL_GET_SEATS = 'http://localhost:8000/schedule/seat/';
+  URL_BOOK_TICKET = 'http://localhost:8000/schedule/ticket';
 
 
   getTickets() {
@@ -20,6 +21,14 @@ export class TicketService {
 
   getSeats(id) {
     return this.http.get<Seat>(this.URL_GET_SEATS + id, {headers: this.authService.getHeader()});
+  }
+
+  bookTicket(seat, ID) {
+    const scheduleDTO = {
+      schedule: ID,
+      seatDTO: seat
+    };
+    return this.http.put(this.URL_BOOK_TICKET, scheduleDTO, {headers: this.authService.getHeaderPost()});
   }
 }
 
