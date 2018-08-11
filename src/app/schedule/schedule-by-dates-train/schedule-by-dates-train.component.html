@@ -1,40 +1,43 @@
-<header class="masthead" style="background-image: url('/src/assets/images/bg.png')">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <form class="form-horizontal login_box align-items-center" #f="ngForm" (ngSubmit)="onSubmit(f)"
-                ngNativeValidate>
-            <div class="row text-center">
-              <div class="col form-group">
-                <label class="text-warning font-weight-bold">DATE DEPARTURE</label>
-                <input type="date" class="form-control text-center text-dark" placeholder="DEPARTURE DATE"
-                       name="dateDeparture" ngModel #dateDeparture="ngModel"
-                       required>
-              </div>
-              <div class="col-1"></div>
-              <div class="col form-group">
-                <label class="text-warning font-weight-bold">DATE ARRIVAL</label>
-                <input type="date" class="form-control text-center text-dark" placeholder="ARRIVAL DATE"
-                       name="dateArrival" ngModel #dateArrival="ngModel"
-                       required>
-              </div>
-              <div class="col-1"></div>
-              <div class="col form-group">
-                <label class="text-warning font-weight-bold">TRAIN</label>
-                <input type="text" class="form-control text-center text-dark" placeholder="TRAIN" name="train" ngModel
-                       #train="ngModel" required
-                       autocomplete="off" list="trainsList">
-              </div>
+<div class="container bgRailway">
+  <datalist id="trainsList">
+    <div>
+      <option *ngFor=" let value of trainsList">{{value}}</option>
+    </div>
+  </datalist>
+  <div class="row">
+    <div class="col-lg-11 mx-auto">
+      <div class="site-heading">
+        <form class="form-horizontal login_box align-items-center" #f="ngForm" (ngSubmit)="onSubmit(f)"
+              ngNativeValidate>
+          <div class="row text-center">
+            <div class="col form-group">
+              <label class="text-warning font-weight-bold">DATE DEPARTURE</label>
+              <input type="date" class="form-control text-center text-dark" placeholder="DEPARTURE DATE"
+                     name="dateDeparture" ngModel #dateDeparture="ngModel"
+                     required>
             </div>
-            <br>
-            <div class="text-center">
-              <button type="submit" class="btn btn-lg btn-outline-warning">search schedule
-              </button>
+            <div class="col-1"></div>
+            <div class="col form-group">
+              <label class="text-warning font-weight-bold">DATE ARRIVAL</label>
+              <input type="date" class="form-control text-center text-dark" placeholder="ARRIVAL DATE"
+                     name="dateArrival" ngModel #dateArrival="ngModel"
+                     required>
             </div>
-          </form>
-        </div>
+            <div class="col-1"></div>
+            <div class="col form-group">
+              <label class="text-warning font-weight-bold">TRAIN</label>
+              <input type="text" class="form-control text-center text-dark" placeholder="TRAIN" name="train" ngModel
+                     #train="ngModel" required
+                     autocomplete="off" list="trainsList">
+            </div>
+          </div>
+          <br>
+          <div class="text-center">
+            <button type="submit" class="btn btn-lg btn-outline-warning">search schedule
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-</header>
+</div>
