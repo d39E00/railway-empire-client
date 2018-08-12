@@ -3,8 +3,11 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class AuthenticationService {
 
-  login = 'login@mail.ru';
-  password = 'pass';
+  private login: string;
+  private password: string;
+  private ROLE_ADMIN: boolean;
+  private ROLE_USER: boolean;
+  private ROLE_MANAGER: boolean;
 
   constructor() {
   }
@@ -12,17 +15,9 @@ export class AuthenticationService {
   authorize(user) {
     this.login = user.username;
     this.password = user.password;
-  }
-
-  getAuthorized() {
-    return {
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Basic ' + btoa(this.login + ':' + this.password),
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'X-Requested-With': 'XMLHttpRequest'
-      }, responseType: 'text'
-    };
+    this.ROLE_ADMIN = false;
+    this.ROLE_MANAGER = false;
+    this.ROLE_USER = true;
   }
 
   getHeader() {
@@ -50,6 +45,18 @@ export class AuthenticationService {
       'Content-Type': 'application/x-www-form-urlencoded',
       'X-Requested-With': 'XMLHttpRequest'
     };
+  }
+
+  getAdminRole() {
+    return this.ROLE_ADMIN;
+  }
+
+  getManagerRole() {
+    return this.ROLE_MANAGER;
+  }
+
+  getUserRole() {
+    return this.ROLE_USER;
   }
 }
 
