@@ -19,20 +19,15 @@
   <div class="row text-left text-warning">
     <div class="col-4">
       <label class="font-weight-bold">Departure:</label>
-      <label>{{ticket.scheduleDateDeparture}}</label>
+      <label>{{ticket.scheduleDateDeparture.replace('.0','')}}</label>
     </div>
     <div class="col-3">
       <label class="font-weight-bold">Arrival:</label>
-      <label>{{ticket.scheduleDateArrival}}</label>
+      <label>{{ticket.scheduleDateArrival.replace('.0','')}}</label>
     </div>
   </div>
   <div class="text-warning text-right font-weight-bold">
     <h5 class="font-weight-bold">price: $ {{ticket.price}}</h5>
-  </div>
-  <div class="text-right">
-    <button class='btn btn-outline-warning' (click)="download(ticket)">
-      <img src="/src/assets/images/download-button.png">
-    </button>
   </div>
 </div>
 <br>
