@@ -4,7 +4,7 @@ import {ScheduleService} from '../../service/schedule.service';
 import {Schedule} from '../../models/schedule';
 import {TrainService} from '../../service/train.service';
 import {StationService} from '../../service/station.service';
-import {swal} from 'ng2-sweetalert2';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-schedule',

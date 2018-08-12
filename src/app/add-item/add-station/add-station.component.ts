@@ -29,6 +29,7 @@ export class AddStationComponent implements OnInit {
 
     if (station.latitude === '' || station.longitude === '') {
       this.googleService.getCoordinates(station.name).subscribe(response => {
+        alert(JSON.stringify(response));
         this.data = response;
         const latitude = this.data.results[0].geometry.location.lat;
         const longitude = this.data.results[0].geometry.location.lng;
