@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
 import {NgForm} from '@angular/forms';
+import swal from 'sweetalert2';
+import {User} from '../models/user';
 
 @Component({
   selector: 'app-profile',
@@ -9,32 +11,47 @@ import {NgForm} from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-  firstName = '';
-  lastName = '';
-  login = '';
-  birthDay = '';
-  sex = '';
+  firstName: string;
+  lastName: string;
+  login: string;
+  birthDay: string;
+  sex: string;
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    const user = this.userService.getProfile();
-    this.firstName = user.firstName;
-    this.lastName = user.lastName;
-    this.login = user.login;
-    this.birthDay = user.birthDay;
-    this.sex = user.sex;
+    this.userService.getProfile().subscribe(user => {
+      this.firstName = user.firstName;
+      this.lastName = user.lastName;
+      this.login = user.login;
+      this.birthDay = user.birthDay;
+      this.sex = user.sex;
+    }, error => {
+      alert(JSON.stringify(error));
+      console.log(error);
+      swal({
+        title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+      });
+    });
   }
 
   onSubmit(f: NgForm) {
-    const user = {
-      firstName: f.value.firstName,
-      lastName: f.value.lastName,
-      login: f.value.login,
-      birthDay: f.value.birthDay,
-      sex: f.value.sex
-    };
-    this.userService.editProfile(user);
+    const user = new User();
+    user.firstName = f.value.firstName;
+    user.lastName = f.value.lastName;
+    user.login = f.value.login;
+    user.birthDay = f.value.birthDay;
+    user.sex = f.value.sex;
+    this.userService.editProfile(user).subscribe(res => {
+      console.log(res);
+      swal({title: 'Congratulation!', text: 'You update your profile!', type: 'success'});
+    }, error => {
+      alert(JSON.stringify(error));
+      console.log(error);
+      swal({
+        title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+      });
+    });
   }
 }
