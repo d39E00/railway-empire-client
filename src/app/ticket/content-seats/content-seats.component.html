@@ -114,8 +114,19 @@
         </li>
       </ul>
     </div>
-    <div style="margin-left: 46%; margin-bottom: 5%; margin-top: -5%">
-      <button (click)="bookingTicket()" class="btn bg-light btn-outline-warning">
+    <div style="margin-bottom: 5%; margin-top: -5%" [hidden]="!FLAG">
+      <button (click)="prev()" class="btn btn-light border-warning prev">
+        <img src="/src/assets/images/left-arrow.png">
+      </button>
+      <button (click)="bookingTicket()" class="btn bg-light btn-outline-warning" style="margin-left: 5%">
+        BOOK TICKET
+      </button>
+      <button (click)="next()" class="btn btn-light border-warning next">
+        <img src="/src/assets/images/right-arrow.png">
+      </button>
+    </div>
+    <div style="margin-bottom: 5%; margin-top: -5%" [hidden]="FLAG">
+      <button (click)="bookingTicket()" class="btn bg-light btn-outline-warning" style="margin-left: 46%">
         BOOK TICKET
       </button>
     </div>
@@ -129,4 +140,3 @@
   <span aria-hidden="true" class="carousel-control-next-icon"></span>
   <span class="sr-only">Previous</span>
 </a>
-

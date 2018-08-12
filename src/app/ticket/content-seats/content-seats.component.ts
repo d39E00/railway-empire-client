@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {TicketService} from '../../service/ticket.service';
 import swal from 'sweetalert2';
 import {SeatEntity} from '../../models/seat.entity';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-content-seats',
@@ -10,7 +11,19 @@ import {SeatEntity} from '../../models/seat.entity';
 })
 export class ContentSeatsComponent implements OnInit {
 
-  constructor(private ticketService: TicketService) {
+  @Input() ID: number;
+  @Input() NEXT: number;
+  @Input() FLAG: boolean;
+  maxCntCarriage = 5;
+  currentCarriage = 1;
+  bookedSeat: SeatEntity[] = [];
+  booking: boolean[] = [];
+  selecting: boolean[] = [];
+  nonSelecting: boolean[] = [];
+  currentSeat = 0;
+  PREV = this.ID;
+
+  constructor(private ticketService: TicketService, private router: Router) {
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 10; j++) {
         this.booking.push(false);
@@ -20,22 +33,9 @@ export class ContentSeatsComponent implements OnInit {
     }
   }
 
-  ID = 50;
-  maxCntCarriage = 5;
-  currentCarriage = 1;
-  bookedSeat: SeatEntity[] = [];
-  booking: boolean[] = [false];
-  selecting: boolean[] = [false];
-  nonSelecting: boolean[] = [true];
-  currentSeat = 0;
-
-
   ngOnInit(): void {
-    this.ticketService.getSeats(this.ID).subscribe(res => {
-      this.maxCntCarriage = res.cntCarriages;
-      this.bookedSeat = res.bookingSeats;
-      this.update();
-    });
+    this.clear();
+    this.updateRequest();
   }
 
   toggle(index) {
@@ -65,23 +65,38 @@ export class ContentSeatsComponent implements OnInit {
   left() {
     if (this.currentCarriage > 1) {
       this.currentCarriage--;
-      this.update();
+      this.updateRequest();
     }
   }
 
   right() {
     if (this.currentCarriage < this.maxCntCarriage) {
       this.currentCarriage++;
-      this.update();
+      this.updateRequest();
     }
   }
+
+  updateRequest() {
+    this.ticketService.getSeats(this.ID).subscribe(res => {
+      this.clear();
+      this.maxCntCarriage = res.cntCarriages;
+      this.bookedSeat = res.bookingSeats;
+      this.update();
+    });
+  }
+
+  clear() {
+    for (let i = 0; i < 30; i++) {
+      this.booking[i] = false;
+      this.nonSelecting[i] = true;
+    }
+  }
+
 
   update() {
     for (let i = 0; i < this.bookedSeat.length; i++) {
       if (this.bookedSeat[i].carriage === this.currentCarriage) {
-        this.booking[i] = true;
-      } else {
-        this.booking[i] = false;
+        this.booking[this.bookedSeat[i].seat] = true;
       }
     }
   }
@@ -95,6 +110,19 @@ export class ContentSeatsComponent implements OnInit {
         swal({
           title: 'Congratulations!', text: 'You book ticket', type: 'success'
         });
+        this.booking[seat.seat] = true;
+        this.updateRequest();
+        if (this.FLAG) {
+          if (this.ID !== this.NEXT) {
+            this.ID = this.NEXT;
+            this.ngOnInit();
+          } else {
+            swal({
+              title: 'Congratulations!', text: 'You book all tickets', type: 'success'
+            });
+            this.router.navigateByUrl('/home');
+          }
+        }
       }, error => {
         console.log(error);
         swal({
@@ -106,5 +134,17 @@ export class ContentSeatsComponent implements OnInit {
         title: 'Oops..', text: 'You didn\'t choose seat!', type: 'warning'
       });
     }
+  }
+
+  next() {
+    this.PREV = this.ID;
+    this.ID = this.NEXT;
+    this.ngOnInit();
+  }
+
+  prev() {
+    this.NEXT = this.ID;
+    this.ID = this.PREV;
+    this.ngOnInit();
   }
 }

@@ -5,7 +5,7 @@
   border: 2px solid dimgrey;
   border-radius: 50px;
   padding: 3%;
-  margin-top: 150px;
+  margin-top: 100px;
   margin-bottom: 150px;
   margin-left: 33%;
   box-shadow: 5px 10px orange;
@@ -65,4 +65,12 @@
 
 ngb-carousel {
   outline: none;
+}
+
+.next {
+  margin-left: 5%;
+}
+
+.prev {
+  margin-left: 38%;
 }
