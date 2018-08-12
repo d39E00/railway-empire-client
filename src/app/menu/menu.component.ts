@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthenticationService} from '../service/authentication.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,5 +8,17 @@ import {Component} from '@angular/core';
 })
 
 export class MenuComponent {
+
+
+  ROLE_ADMIN: boolean;
+  ROLE_USER: boolean;
+  ROLE_MANAGER: boolean;
+
+  constructor(private authService: AuthenticationService) {
+    this.ROLE_USER = this.authService.getUserRole();
+    this.ROLE_MANAGER = this.authService.getManagerRole();
+    this.ROLE_ADMIN = this.authService.getAdminRole();
+  }
+
 }
 
