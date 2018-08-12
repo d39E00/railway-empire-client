@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ScheduleService} from '../../service/schedule.service';
 import {Schedule} from '../../models/schedule';
 import swal from 'sweetalert2';
+import {TicketService} from '../../service/ticket.service';
+import {Ticket} from '../../models/ticket';
 
 
 @Component({
@@ -11,10 +13,11 @@ import swal from 'sweetalert2';
 })
 export class TableEditItemScheduleComponent implements OnInit {
 
-  constructor(private scheduleService: ScheduleService) {
+  constructor(private scheduleService: ScheduleService, private ticketService: TicketService) {
   }
 
   schedules: Schedule[] = [];
+  tickets: Ticket[] = [];
 
   ngOnInit() {
     this.scheduleService.getAll().subscribe(
@@ -79,6 +82,58 @@ export class TableEditItemScheduleComponent implements OnInit {
   }
 
   info(id) {
-    // TODO
+    this.ticketService.getTicketById(id).subscribe(res => {
+      let content = '';
+      this.tickets = res;
+      for (let i = 0; i < this.tickets.length; i++) {
+        if (this.tickets[i].userBirthDay == null) {
+          this.tickets[i].userBirthDay = '-';
+        }
+        if (this.tickets[i].userSex == null) {
+          this.tickets[i].userSex = '-';
+        }
+        content = content + '<tr><th class=\'text-center\'>' + this.tickets[i].userFirstName +
+          '</th><th class=\'text-center\'>' + this.tickets[i].userLastName +
+          '</th><th class=\'text-center\'>' + this.tickets[i].userLogin +
+          '</th><th>' + this.tickets[i].userBirthDay +
+          '</th><th>' + this.tickets[i].userSex +
+          '</th><th>' + this.tickets[i].seatCarriage +
+          '</th><th>' + this.tickets[i].seatSeat + '</th></tr>';
+      }
+      if (this.tickets.length > 0) {
+        swal({
+          title: 'For this schedule bought ' + this.tickets.length + ' tickets',
+          width: '800px',
+          html:
+          `<table class="table table-striped table-dark text-center">
+        <thead class="font-weight-bold">
+        <tr>
+            <th class="text-center">First name</th>
+            <th class="text-center">Last name</th>
+            <th class="text-center">Login</th>
+            <th>Birthday</th>
+			<th>sex</th>
+			<th>carriage</th>
+			<th>seat</th>
+        </tr>
+        </thead>
+        <tbody class="text-center text-warning" id="ticketTableId">` + content +
+          `</tbody>
+    </table>`
+        });
+      } else {
+        swal({
+          title: 'Empty..',
+          text: 'For this schedule nobody bought tickets.',
+          type: 'warning'
+        });
+      }
+    }, error => {
+      alert(JSON.stringify(error));
+      console.log(error);
+      swal({
+        title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
+      });
+    });
   }
 }

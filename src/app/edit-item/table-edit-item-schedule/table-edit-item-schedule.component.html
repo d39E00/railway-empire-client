@@ -1,4 +1,4 @@
-<table class="table table-striped table-dark text-center">
+<table class="table table-striped tableRailway text-center" [(mfData)]="schedules" #mf="mfDataTable" [mfRowsOnPage]="10">
   <thead class="text-center font-weight-bold">
   <tr>
     <th class="text-center">Train</th>
@@ -10,7 +10,7 @@
   </tr>
   </thead>
   <tbody class="text-center text-warning">
-  <tr *ngFor="let schedule of schedules; let i=index">
+  <tr *ngFor="let schedule of mf.data; let i=index">
     <td>{{schedule.trainName}}</td>
     <td> {{schedule.stationDepartureName}}</td>
     <td> {{schedule.stationArrivalName}}</td>
@@ -26,6 +26,12 @@
         <img src='/src/assets/images/magnifier.png'></button>
     </td>
   </tr>
-
   </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="4">
+      <mfBootstrapPaginator class="pagination pagination-sm justify-content-end" [rowsOnPageSet]="[10, 50,100, 1000]"></mfBootstrapPaginator>
+    </td>
+  </tr>
+  </tfoot>
 </table>
