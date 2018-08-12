@@ -10,15 +10,13 @@ import {MenuComponent} from './menu/menu.component';
 import {FooterComponent} from './footer/footer.component';
 import {UserService} from './service/user.service';
 import {AddItemComponent} from './add-item/add-item.component';
-import {MapUserComponent} from './map-user/map-user.component';
 import {ScheduleComponent} from './schedule/schedule.component';
 import {EditItemComponent} from './edit-item/edit-item.component';
 import {ProfileComponent} from './profile/profile.component';
-import {MapItemComponent} from './map-item/map-item.component';
 import {ChartComponent} from './chart/chart.component';
 import {AuditComponent} from './audit/audit.component';
 import {TripComponent} from './trip/trip.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {AddTrainComponent} from './add-item/add-train/add-train.component';
 import {AddScheduleComponent} from './add-item/add-schedule/add-schedule.component';
 import {AddStationComponent} from './add-item/add-station/add-station.component';
@@ -54,6 +52,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TicketComponent} from './ticket/ticket.component';
 import {FooterSeatsComponent} from './ticket/footer-seats/footer-seats.component';
 import {ContentSeatsComponent} from './ticket/content-seats/content-seats.component';
+import {TokenInterceptor} from './auth/token.interceptor';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -62,8 +61,6 @@ const appRoutes: Routes = [
   {path: 'edit-item', component: EditItemComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'schedule', component: ScheduleComponent},
-  {path: 'map-user', component: MapUserComponent},
-  {path: 'map-item', component: MapItemComponent},
   {path: 'chart', component: ChartComponent},
   {path: 'audit', component: AuditComponent},
   {path: 'trips', component: TripComponent},
@@ -82,11 +79,9 @@ const appRoutes: Routes = [
     MenuComponent,
     FooterComponent,
     AddItemComponent,
-    MapUserComponent,
     ScheduleComponent,
     EditItemComponent,
     ProfileComponent,
-    MapItemComponent,
     ChartComponent,
     AuditComponent,
     TripComponent,
@@ -111,13 +106,23 @@ const appRoutes: Routes = [
     TicketComponent,
     FooterSeatsComponent,
     ContentSeatsComponent],
-  imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
+  imports: [BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN',
+    }),
+    RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatPaginatorModule,
     DataTableModule,
     NgbModule.forRoot()],
   bootstrap: [AppComponent],
-  providers: [UserService,
+  providers: [
+    UserService,
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    UserService,
     ScheduleService,
     TrainService,
     StationService,
