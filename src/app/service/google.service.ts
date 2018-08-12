@@ -9,6 +9,6 @@ export class GoogleService {
 
   getCoordinates(city) {
     return this.httpClient.get('https://maps.googleapis.com/maps/api/geocode/json?address=$' +
-      city + '&key=AIzaSyArC_Xw9Sto8WokyBDa-xMN5HmcYmkNsGU');
+      city + '&key=AIzaSyBDlLcHvt_VzI-31mvgHNtD_nyyTE9Qa5E');
   }
 }
