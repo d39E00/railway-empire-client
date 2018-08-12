@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import swal from 'sweetalert2';
+import {User} from '../models/user';
 
 @Component({
   selector: 'app-registration',
@@ -15,12 +16,11 @@ export class RegistrationComponent {
   }
 
   onSubmit(f: NgForm) {
-    const user = {
-      firstName: f.value.firstName,
-      lastName: f.value.lastName,
-      login: f.value.login,
-      password: f.value.password
-    };
+    const user = new User();
+    user.firstName = f.value.firstName;
+    user.lastName = f.value.lastName;
+    user.login = f.value.login;
+    user.password = f.value.password;
     this.userService.registration(user).subscribe(
       response => {
         console.log(response);
