@@ -14,10 +14,11 @@ export class TicketService {
   URL_GET_SEATS = 'http://localhost:8000/schedule/seat/';
   URL_BOOK_TICKET = 'http://localhost:8000/schedule/ticket';
   URL_GET_BY_ID_TICKET = 'http://localhost:8000/schedule/ticket/all/';
+  URL_DOWNLOAD = 'http://localhost:8000/download/';
 
 
   getTickets() {
-    return this.http.get<Ticket[]>(this.URL_GET_TICKETS, {headers: this.authService.getHeader()});
+    return this.http.get<Ticket[]>(this.URL_GET_TICKETS, {headers: this.authService.getHeaderUser()});
   }
 
   getSeats(id) {
@@ -34,6 +35,10 @@ export class TicketService {
 
   getTicketById(id) {
     return this.http.get<Ticket[]>(this.URL_GET_BY_ID_TICKET + id, {headers: this.authService.getHeader()});
+  }
+
+  getDownload(id) {
+    return this.http.get(this.URL_DOWNLOAD + id, {headers: this.authService.getHeaderUser(), responseType: 'text'});
   }
 }
 

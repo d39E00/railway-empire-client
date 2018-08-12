@@ -42,5 +42,14 @@ export class AuthenticationService {
       'X-Requested-With': 'XMLHttpRequest'
     };
   }
+
+  getHeaderUser() {
+    return {
+      'Accept': 'application/json',
+      'Authorization': 'Basic ' + btoa('veaufa@mail.ru' + ':' + this.password),
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'X-Requested-With': 'XMLHttpRequest'
+    };
+  }
 }
 
