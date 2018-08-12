@@ -41,11 +41,4 @@ export class ScheduleByDatesTrainComponent implements OnInit {
       });
     });
   }
-
-  getDelayBetweenTwoDates(dateDeparture, dateArrival) {
-  }
-
-  findTicket(schedule, i) {
-
-  }
 }

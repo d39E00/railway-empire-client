@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ChartService} from '../../service/chart.service';
 import {randomColor} from 'randomColor';
 import {Chart} from 'chart.js';

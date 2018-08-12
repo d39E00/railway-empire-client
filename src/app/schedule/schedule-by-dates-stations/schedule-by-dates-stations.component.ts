@@ -52,7 +52,6 @@ export class ScheduleByDatesStationsComponent implements OnInit {
       });
     });
     if (this.transfer) {
-      alert('hey');
       this.scheduleService.getTransfer(schedule).subscribe(res => {
         this.schedulesTransfer = res;
         this.messageTransferEvent.emit(this.schedulesTransfer);
@@ -64,4 +63,6 @@ export class ScheduleByDatesStationsComponent implements OnInit {
       });
     }
   }
+
+
 }

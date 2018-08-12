@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Schedule} from '../models/schedule';
 import {ScheduleTransfer} from '../models/schedule.transfer';
 import {Router} from '@angular/router';
@@ -41,11 +41,11 @@ export class ScheduleComponent implements OnInit {
     return humanReadable.hours + ':' + humanReadable.minutes;
   }
 
-  findTicket(schedule, i) {
-    this.router.navigateByUrl('/ticket');
+  findTicket(id) {
+    this.router.navigateByUrl('/ticket/direct/' + id);
   }
 
-  findTicketTransfer(schedule) {
-    this.router.navigateByUrl('/ticket');
+  findTicketTransfer(id_departure, id_arrival) {
+    this.router.navigateByUrl('/ticket/transfer/' + id_departure + '/' + id_arrival);
   }
 }
