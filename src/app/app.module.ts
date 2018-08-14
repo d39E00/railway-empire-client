@@ -54,6 +54,7 @@ import {FooterSeatsComponent} from './ticket/footer-seats/footer-seats.component
 import {ContentSeatsComponent} from './ticket/content-seats/content-seats.component';
 import {TokenInterceptor} from './auth/token.interceptor';
 import {ErrorComponent} from './error/error.component';
+import {AngularTokenModule} from 'angular-token';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -112,6 +113,11 @@ const appRoutes: Routes = [
   imports: [BrowserModule,
     FormsModule,
     HttpClientModule,
+    AngularTokenModule.forRoot({
+      apiBase: 'http://localhost:8000',
+      signInPath: 'login',
+      signInRedirect: 'home'
+    }),
     RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatPaginatorModule,
@@ -120,6 +126,7 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent],
   providers: [
     UserService,
+    AngularTokenModule,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     UserService,
     ScheduleService,
