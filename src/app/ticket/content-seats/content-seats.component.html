@@ -66,50 +66,65 @@
             style="top:45px; left: 180px" (click)="toggle(14)">
           <a title="14">14</a>
         </li>
-        <li class="seat row-0 col-5" style="top:45px; left: 225px" (click)="toggle(17)">
+        <li [ngClass]="{'selectedSeat': booking[17], 'selectingSeat': selecting[17], 'seat': nonSelecting[17]}"
+            style="top:45px; left: 225px" (click)="toggle(17)">
           <a title="17">17</a>
         </li>
-        <li class="seat row-0 col-5" style="top:45px; left: 270px" (click)="toggle(20)">
+        <li [ngClass]="{'selectedSeat': booking[20], 'selectingSeat': selecting[20], 'seat': nonSelecting[20]}"
+            style="top:45px; left: 270px" (click)="toggle(20)">
           <a title="20">20</a>
         </li>
-        <li class="seat row-0 col-5" style="top:45px; left: 315px" (click)="toggle(23)">
+        <li [ngClass]="{'selectedSeat': booking[23], 'selectingSeat': selecting[23], 'seat': nonSelecting[23]}"
+            style="top:45px; left: 315px" (click)="toggle(23)">
           <a title="23">23</a>
         </li>
-        <li class="seat row-0 col-5" style="top:45px; left: 360px" (click)="toggle(26)">
+        <li [ngClass]="{'selectedSeat': booking[26], 'selectingSeat': selecting[26], 'seat': nonSelecting[26]}"
+            style="top:45px; left: 360px" (click)="toggle(26)">
           <a title="26">26</a>
         </li>
-        <li class="seat row-0 col-5" style="top:45px; left: 405px" (click)="toggle(29)">
+        <li [ngClass]="{'selectedSeat': booking[29], 'selectingSeat': selecting[29], 'seat': nonSelecting[29]}"
+            style="top:45px; left: 405px" (click)="toggle(29)">
           <a title="29">29</a>
         </li>
 
-        <li class="seat row-0 col-0" style="top:90px; left: 0px" (click)="toggle(3)">
+        <li [ngClass]="{'selectedSeat': booking[3], 'selectingSeat': selecting[3], 'seat': nonSelecting[3]}"
+            style="top:90px; left: 0px" (click)="toggle(3)">
           <a title="3" style="margin-left: 0px">3</a>
         </li>
-        <li class="seat row-0 col-2" style="top:90px; left: 45px" (click)="toggle(6)">
+        <li [ngClass]="{'selectedSeat': booking[6], 'selectingSeat': selecting[6], 'seat': nonSelecting[6]}"
+            style="top:90px; left: 45px" (click)="toggle(6)">
           <a title="6">6</a>
         </li>
-        <li class="seat row-0 col-3" style="top:90px; left: 90px" (click)="toggle(9)">
+        <li [ngClass]="{'selectedSeat': booking[9], 'selectingSeat': selecting[9], 'seat': nonSelecting[9]}"
+            style="top:90px; left: 90px" (click)="toggle(9)">
           <a title="9">9</a>
         </li>
-        <li class="seat row-0 col-4" style="top:90px; left: 135px" (click)="toggle(12)">
+        <li [ngClass]="{'selectedSeat': booking[12], 'selectingSeat': selecting[12], 'seat': nonSelecting[12]}"
+            style="top:90px; left: 135px" (click)="toggle(12)">
           <a title="12">12</a>
         </li>
-        <li class="seat row-0 col-5" style="top:90px; left: 180px" (click)="toggle(15)">
+        <li [ngClass]="{'selectedSeat': booking[15], 'selectingSeat': selecting[15], 'seat': nonSelecting[15]}"
+            style="top:90px; left: 180px" (click)="toggle(15)">
           <a title="15">15</a>
         </li>
-        <li class="seat row-0 col-5" style="top:90px; left: 225px" (click)="toggle(18)">
+        <li [ngClass]="{'selectedSeat': booking[18], 'selectingSeat': selecting[18], 'seat': nonSelecting[18]}"
+            style="top:90px; left: 225px" (click)="toggle(18)">
           <a title="18">18</a>
         </li>
-        <li class="seat row-0 col-5" style="top:90px; left: 270px" (click)="toggle(21)">
+        <li [ngClass]="{'selectedSeat': booking[21], 'selectingSeat': selecting[21], 'seat': nonSelecting[21]}"
+            style="top:90px; left: 270px" (click)="toggle(21)">
           <a title="21">21</a>
         </li>
-        <li class="seat row-0 col-5" style="top:90px; left: 315px" (click)="toggle(24)">
+        <li [ngClass]="{'selectedSeat': booking[24], 'selectingSeat': selecting[24], 'seat': nonSelecting[24]}"
+            style="top:90px; left: 315px" (click)="toggle(24)">
           <a title="24">24</a>
         </li>
-        <li class="seat row-0 col-5" style="top:90px; left: 360px" (click)="toggle(27)">
+        <li [ngClass]="{'selectedSeat': booking[27], 'selectingSeat': selecting[27], 'seat': nonSelecting[27]}"
+            style="top:90px; left: 360px" (click)="toggle(27)">
           <a title="27">27</a>
         </li>
-        <li class="seat row-0 col-5" style="top:90px; left: 405px" (click)="toggle(30)">
+        <li [ngClass]="{'selectedSeat': booking[30], 'selectingSeat': selecting[30], 'seat': nonSelecting[30]}"
+            style="top:90px; left: 405px" (click)="toggle(30)">
           <a title="30">30</a>
         </li>
       </ul>
