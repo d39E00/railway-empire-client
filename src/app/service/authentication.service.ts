@@ -5,7 +5,7 @@ export class AuthenticationService {
 
   private login: string;
   private token: string;
-  private roles = [];
+  private roles = ['ROLE_ADMIN', 'ROLE_MANAGER'];
   private ROLE_ADMIN: boolean;
   private ROLE_USER: boolean;
   private ROLE_MANAGER: boolean;
@@ -20,6 +20,7 @@ export class AuthenticationService {
     this.ROLE_MANAGER = false;
     this.ROLE_USER = false;
     localStorage.setItem('token', btoa(this.login + ':' + this.token));
+    localStorage.setItem('roles', JSON.stringify(this.roles));
   }
 
   getHeader() {
@@ -50,14 +51,23 @@ export class AuthenticationService {
   }
 
   getAdminRole() {
+    if (localStorage.getItem('roles').includes('ROLE_ADMIN')) {
+      this.ROLE_ADMIN = true;
+    }
     return this.ROLE_ADMIN;
   }
 
   getManagerRole() {
+    if (localStorage.getItem('roles').includes('ROLE_MANAGER')) {
+      this.ROLE_MANAGER = true;
+    }
     return this.ROLE_MANAGER;
   }
 
   getUserRole() {
+    if (localStorage.getItem('roles').includes('ROLE_USER')) {
+      this.ROLE_USER = true;
+    }
     return this.ROLE_USER;
   }
 }
