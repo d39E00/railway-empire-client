@@ -4,7 +4,8 @@ import {Injectable} from '@angular/core';
 export class AuthenticationService {
 
   private login: string;
-  private password: string;
+  private token: string;
+  private roles = [];
   private ROLE_ADMIN: boolean;
   private ROLE_USER: boolean;
   private ROLE_MANAGER: boolean;
@@ -14,16 +15,17 @@ export class AuthenticationService {
 
   authorize(user) {
     this.login = user.username;
-    this.password = user.password;
-    this.ROLE_ADMIN = false;
+    this.token = user.password;
+    this.ROLE_ADMIN = true;
     this.ROLE_MANAGER = false;
-    this.ROLE_USER = true;
+    this.ROLE_USER = false;
+    localStorage.setItem('token', btoa(this.login + ':' + this.token));
   }
 
   getHeader() {
     return {
       'Accept': 'application/json',
-      'Authorization': 'Basic ' + btoa(this.login + ':' + this.password),
+      'Authorization': 'Basic ' + localStorage.getItem('token'),
       'Content-Type': 'application/x-www-form-urlencoded',
       'X-Requested-With': 'XMLHttpRequest'
     };
@@ -32,7 +34,7 @@ export class AuthenticationService {
   getHeaderPost() {
     return {
       'Accept': 'application/json',
-      'Authorization': 'Basic ' + btoa(this.login + ':' + this.password),
+      'Authorization': 'Basic ' + localStorage.getItem('token'),
       'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest'
     };
@@ -41,7 +43,7 @@ export class AuthenticationService {
   getHeaderUser() {
     return {
       'Accept': 'application/json',
-      'Authorization': 'Basic ' + btoa('veaufa@mail.ru' + ':' + this.password),
+      'Authorization': 'Basic ' + localStorage.getItem('token'),
       'Content-Type': 'application/x-www-form-urlencoded',
       'X-Requested-With': 'XMLHttpRequest'
     };
