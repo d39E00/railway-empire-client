@@ -23,7 +23,6 @@ export class ChartTicketsComponent implements OnInit {
   ngOnInit() {
     this.chartService.getTicketsCnt().subscribe(
       res => {
-        alert(JSON.stringify(res));
         this.result = res;
         this.labels = this.result.labels;
         this.values = this.result.values;

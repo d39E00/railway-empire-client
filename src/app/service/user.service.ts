@@ -2,11 +2,12 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
 import {User} from '../models/user';
+import {AngularTokenService} from 'angular-token';
 
 @Injectable()
 export class UserService {
 
-  constructor(private httpClient: HttpClient, private authService: AuthenticationService) {
+  constructor(private httpClient: HttpClient, private authService: AuthenticationService, private token: AngularTokenService) {
   }
 
   URL_REGISTRATION = 'http://localhost:8000/registration';
@@ -17,7 +18,14 @@ export class UserService {
   login(user) {
     this.authService.authorize(user);
     const body = 'username=' + user.username + '&password=' + user.password;
-    return this.httpClient.post(this.URL_LOGIN, body, {headers: this.authService.getHeader(), responseType: 'text'});
+    return this.httpClient.post(this.URL_LOGIN, body, {
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Basic ' + btoa(user.username + ':' + user.password),
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Requested-With': 'XMLHttpRequest'
+      }, responseType: 'text'
+    });
   }
 
   registration(user) {

@@ -37,9 +37,6 @@ export class ScheduleService {
     return this.httpClient.put(this.URL_UPDATE_SCHEDULE, schedule, {headers: this.authService.getHeaderPost()});
   }
 
-  info(schedule) {
-  }
-
   getByAllParameters(schedule) {
     return this.httpClient.post<Schedule[]>(this.URL_GET_BY_ALL_PARAMETERS, schedule, {headers: this.authService.getHeaderPost()});
   }
