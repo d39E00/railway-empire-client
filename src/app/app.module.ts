@@ -53,6 +53,7 @@ import {TicketComponent} from './ticket/ticket.component';
 import {FooterSeatsComponent} from './ticket/footer-seats/footer-seats.component';
 import {ContentSeatsComponent} from './ticket/content-seats/content-seats.component';
 import {TokenInterceptor} from './auth/token.interceptor';
+import {ErrorComponent} from './error/error.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -69,6 +70,7 @@ const appRoutes: Routes = [
   {path: 'ticket/:type/:id_Departure/:id_Arrival', component: TicketComponent},
   // {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
   {path: '', component: LoginComponent},
+  {path: 'error', component: ErrorComponent},
   {path: '**', redirectTo: ''}
 ];
 
@@ -105,14 +107,11 @@ const appRoutes: Routes = [
     HomeComponent,
     TicketComponent,
     FooterSeatsComponent,
-    ContentSeatsComponent],
+    ContentSeatsComponent,
+    ErrorComponent],
   imports: [BrowserModule,
     FormsModule,
     HttpClientModule,
-    HttpClientXsrfModule.withOptions({
-      cookieName: 'XSRF-TOKEN',
-      headerName: 'X-XSRF-TOKEN',
-    }),
     RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatPaginatorModule,
