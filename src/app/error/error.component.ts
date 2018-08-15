@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-error',
@@ -7,5 +8,17 @@ import {Component} from '@angular/core';
 })
 
 export class ErrorComponent {
+
+  constructor(private router: Router) {
+
+  }
+
+  check() {
+    if (localStorage.getItem('token') && localStorage.getItem('roles')) {
+      this.router.navigateByUrl('/home');
+    } else {
+      this.router.navigateByUrl('/login');
+    }
+  }
 }
 
