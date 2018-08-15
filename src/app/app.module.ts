@@ -69,7 +69,6 @@ const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'ticket/:type/:id', component: TicketComponent},
   {path: 'ticket/:type/:id_Departure/:id_Arrival', component: TicketComponent},
-  // {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
   {path: '', component: LoginComponent},
   {path: 'error', component: ErrorComponent},
   {path: '**', redirectTo: ''}
