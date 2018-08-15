@@ -47,7 +47,6 @@ export class ProfileComponent implements OnInit {
       console.log(res);
       swal({title: 'Congratulation!', text: 'You update your profile!', type: 'success'});
     }, error => {
-      alert(JSON.stringify(error));
       console.log(error);
       swal({
         title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
