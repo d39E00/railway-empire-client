@@ -3,7 +3,7 @@
 	<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form" ngNativeValidate>
 		<input type="email" name="username" ngModel placeholder="e-mail" required #username="ngModel">
 		<input type="password" name="password" ngModel placeholder="password" #password="ngModel" required>
-		<button>Sing in</button>
+		<button name="singIn">Sing in</button>
     <p class="message">Not registered? <a [routerLink]="['/registration']">Create an account</a></p>
 	</form>
 </div>
