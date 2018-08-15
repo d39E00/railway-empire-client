@@ -7,22 +7,24 @@ import {AngularTokenService} from 'angular-token';
 @Injectable()
 export class UserService {
 
-  constructor(private httpClient: HttpClient, private authService: AuthenticationService, private token: AngularTokenService) {
+  constructor(private httpClient: HttpClient, private authService: AuthenticationService) {
   }
 
   URL_REGISTRATION = 'http://localhost:8000/registration';
-  URL_LOGIN = 'http://localhost:8000/login';
+  URL_LOGIN = 'http://localhost:8000/auth';
   URL_PROFILE_UPDATE = 'http://localhost:8000/home/update';
   URL_PROFILE_GET = 'http://localhost:8000/home/profile/get';
 
   login(user) {
-    this.authService.authorize(user);
-    const body = 'username=' + user.username + '&password=' + user.password;
+    const body = {
+      login: user.username,
+      password: user.password
+    };
     return this.httpClient.post(this.URL_LOGIN, body, {
       headers: {
         'Accept': 'application/json',
         'Authorization': 'Basic ' + btoa(user.username + ':' + user.password),
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
       }, responseType: 'text'
     });
