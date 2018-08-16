@@ -7,24 +7,14 @@ describe('Login in RAILWAY EMPIRE', () => {
     page = new LoginPage();
   });
 
-  const credentials = {
-    username: 'login@mail.ru',
-    password: 'pass'
-  };
-
-  const wrongCredentials = {
-    username: 'test@mail.ru',
-    password: 'test'
-  };
-
   it('Login with truth account values', () => {
     page.navigateTo();
-    page.fillCredenticals(credentials);
+    page.logWithTruthParameters();
   });
 
   it('Login with wrong account values', () => {
     page.navigateTo();
-    page.fillCredenticals(wrongCredentials);
+    page.logWithWrongParameters();
   });
 
 });
