@@ -26,7 +26,6 @@ export class LoginComponent {
         this.router.navigateByUrl('/home');
       },
       error => {
-        alert(JSON.stringify(error));
         swal({
           title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
         });

@@ -3,7 +3,7 @@
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="p-2 text-light" [routerLink]="['/schedule']" id="showScheduleID"
        [hidden]="!(ROLE_USER || ROLE_MANAGER || ROLE_ADMIN)">Schedule</a>
-    <a class="p-2 text-light" [routerLink]="['/add-item']" id="showNewItemID" [hidden]="!(ROLE_ADMIN || ROLE_MANAGER)">New</a>
+    <a class="p-2 text-light" [routerLink]="['/add-item']" name="newItem" [hidden]="!(ROLE_ADMIN || ROLE_MANAGER)">New</a>
     <a class="p-2 text-light" [routerLink]="['/edit-item']" [hidden]="!(ROLE_ADMIN || ROLE_MANAGER)">Edit</a>
     <a class="p-2 text-light" [routerLink]="['/chart']" id="showChartID" [hidden]="!ROLE_ADMIN">Chart</a>
     <a class="p-2 text-light" [routerLink]="['/audit']" [hidden]="!ROLE_ADMIN">Audit</a>
