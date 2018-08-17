@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Schedule} from '../models/schedule';
 import {ScheduleTransfer} from '../models/schedule.transfer';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../service/authentication.service';
 
 @Component({
   selector: 'app-schedule',
@@ -12,9 +13,10 @@ export class ScheduleComponent implements OnInit {
 
   @Input() schedules: Schedule[];
   @Input() schedulesTransfer: ScheduleTransfer[];
+  ROLE_USER: boolean;
 
-
-  constructor(private router: Router) {
+  constructor(private router: Router, private auth: AuthenticationService) {
+    this.ROLE_USER = this.auth.getUserRole();
   }
 
   ngOnInit() {
