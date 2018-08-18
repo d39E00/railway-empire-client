@@ -29,7 +29,6 @@ export class AddStationComponent implements OnInit {
 
     if (station.latitude === '' || station.longitude === '') {
       this.googleService.getCoordinates(station.name).subscribe(response => {
-        alert(JSON.stringify(response));
         this.data = response;
         const latitude = this.data.results[0].geometry.location.lat;
         const longitude = this.data.results[0].geometry.location.lng;
@@ -42,8 +41,8 @@ export class AddStationComponent implements OnInit {
           confirmButtonText: 'It\'s OK!'
         }).then((result) => {
           if (result.value) {
-            station.latitude = f.value.latitude;
-            station.longitude = f.value.longitude;
+            station.latitude = latitude;
+            station.longitude = longitude;
             this.stationService.add(station).subscribe(
               () => swal({title: 'Congratulations!', text: 'You add new station!', type: 'success'}),
               error => {
@@ -68,6 +67,7 @@ export class AddStationComponent implements OnInit {
         },
         error => {
           console.log(error);
+          alert(JSON.stringify(error));
           swal({
             title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
           });
