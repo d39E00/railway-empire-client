@@ -9,7 +9,7 @@ describe('Login in RAILWAY EMPIRE', () => {
 
   it('Login with truth account values', () => {
     page.navigateTo();
-    page.logWithTruthParameters();
+    page.logWithTruthParametersAsAdmin();
   });
 
   it('Login with wrong account values', () => {

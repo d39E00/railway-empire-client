@@ -5,12 +5,20 @@ export class LoginPage {
     return browser.get('/login');
   }
 
-  logWithTruthParameters() {
+  logWithTruthParametersAsUser() {
+    const credentials = {
+      username: 'veaufa@mail.ru',
+      password: 'pass'
+    };
+    this.fillCredentials(credentials);
+  }
+
+  logWithTruthParametersAsAdmin() {
     const credentials = {
       username: 'login@mail.ru',
       password: 'pass'
     };
-    this.fillCredenticals(credentials);
+    this.fillCredentials(credentials);
   }
 
   logWithWrongParameters() {
@@ -18,15 +26,17 @@ export class LoginPage {
       username: 'test@mail.ru',
       password: 'test'
     };
-    this.fillCredenticals(wrongCredentials);
+    this.fillCredentials(wrongCredentials);
+    element(by.css('button.swal2-confirm.swal2-styled')).click();
   }
 
-  fillCredenticals(credentials) {
+  fillCredentials(credentials) {
     element(by.css('[name="username"]')).sendKeys(credentials.username);
-    browser.sleep(2000);
     element(by.css('[name="password"]')).sendKeys(credentials.password);
-    browser.sleep(2000);
     element(by.css('[name="singIn"]')).click();
-    browser.sleep(5000);
+  }
+
+  logOut() {
+    element(by.xpath('//a[contains(text(),\'Sign out\')]')).click();
   }
 }
