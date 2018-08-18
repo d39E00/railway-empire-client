@@ -21,7 +21,7 @@ describe('Create new schedule', () => {
 
   it('Add new schedule Voronezh - Moscow 22 Aug 10:00:00', () => {
     login.navigateTo();
-    login.logWithTruthParameters();
+    login.logWithTruthParametersAsAdmin();
     menu.getTabNewItem();
     page.addSchedule(stationDeparture, stationArrival, trainName, date);
   });

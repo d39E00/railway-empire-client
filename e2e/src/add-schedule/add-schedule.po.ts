@@ -14,5 +14,6 @@ export class AddSchedulePage {
     element(by.css('[name="dateDeparture"')).sendKeys(dateTime);
     element(by.css('[name="addSchedule"]')).click();
     element(by.css('button.swal2-confirm.swal2-styled')).click();
+
   }
 }
