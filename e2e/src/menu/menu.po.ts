@@ -6,8 +6,15 @@ export class MenuPage {
     return browser.get('/home');
   }
 
-  getTabStation() {
+  getTabNewItem() {
     element(by.css('[name="newItem"]')).click();
-    browser.sleep(500);
+  }
+
+  getTabSchedule() {
+    element(by.css('[id="showScheduleID"]')).click();
+  }
+
+  getItemTickets() {
+    element(by.css('[id="showTripsID"]')).click();
   }
 }

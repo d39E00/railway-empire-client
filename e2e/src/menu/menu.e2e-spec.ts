@@ -9,6 +9,6 @@ describe('workspace-project App', () => {
 
   it('Chose add-station tab', () => {
     page.navigateTo();
-    page.getTabStation();
+    page.getTabNewItem();
   });
 });
