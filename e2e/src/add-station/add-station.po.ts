@@ -6,13 +6,14 @@ export class AddStationPage {
     return browser.get('/add-item');
   }
 
-  addStation() {
-    const name = 'Voronezh';
+  addStation(name) {
     element(by.css('[id="stationSubmit"]')).click();
-    browser.sleep(1000);
     element(by.css('[name="stationName"]')).sendKeys(name);
-    browser.sleep(1000);
     element(by.css('[name="addStation"]')).click();
-    browser.sleep(2000);
+    element(by.css('button.swal2-confirm.swal2-styled')).click();
+  }
+
+  stationNotUniq() {
+    element(by.css('button.swal2-confirm.swal2-styled')).click();
   }
 }

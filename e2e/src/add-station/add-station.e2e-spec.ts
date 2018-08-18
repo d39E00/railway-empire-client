@@ -6,7 +6,7 @@ describe('Create new station', () => {
   let page: AddStationPage;
   let login: LoginPage;
   let menu: MenuPage;
-
+  const name = 'Voronezh';
 
   beforeEach(() => {
     page = new AddStationPage();
@@ -17,7 +17,7 @@ describe('Create new station', () => {
   it('Add new station - Voronezh', () => {
     login.navigateTo();
     login.logWithTruthParameters();
-    menu.getTabStation();
-    page.addStation();
+    menu.getTabNewItem();
+    page.addStation(name);
   });
 });
