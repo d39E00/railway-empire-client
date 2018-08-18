@@ -24,16 +24,17 @@ export class TokenInterceptor implements HttpInterceptor {
         }
       })
       .catch((error: any) => {
-        if (error instanceof HttpErrorResponse) {
-          if (error.status === 403) {
-            swal({title: 'Opps...', text: 'You try to get security resource ...', type: 'error'});
-            this.router.navigateByUrl('/error');
-          } else {
-            this.router.navigateByUrl('/login');
-            swal({title: 'Opps...', text: 'Something went wrong ...Unauthorized!', type: 'error'});
+          if (error instanceof HttpErrorResponse) {
+            if (error.status === 403 || error.status === 500) {
+              swal({title: 'Opps...', text: 'You try to get security resource ...', type: 'error'});
+              this.router.navigateByUrl('/error');
+            } else if (error.status === 401) {
+              this.router.navigateByUrl('/login');
+              swal({title: 'Opps...', text: 'Unauthorized!', type: 'error'});
+            }
           }
+          return Observable.throwError(error);
         }
-        return Observable.throwError(error);
-      }) as any;
+      );
   }
 }

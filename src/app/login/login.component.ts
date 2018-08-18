@@ -26,6 +26,8 @@ export class LoginComponent {
         this.router.navigateByUrl('/home');
       },
       error => {
+        f.value.password = '';
+        f.value.login = '';
         swal({
           title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
         });

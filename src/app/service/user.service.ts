@@ -25,7 +25,7 @@ export class UserService {
         'Accept': 'application/json',
         'Authorization': 'Basic ' + btoa(user.username + ':' + user.password),
         'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
+        // 'X-Requested-With': 'XMLHttpRequest'
       }, responseType: 'text'
     });
   }
