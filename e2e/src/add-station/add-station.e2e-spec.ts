@@ -16,7 +16,7 @@ describe('Create new station', () => {
 
   it('Add new station - Voronezh', () => {
     login.navigateTo();
-    login.logWithTruthParameters();
+    login.logWithTruthParametersAsAdmin();
     menu.getTabNewItem();
     page.addStation(name);
   });

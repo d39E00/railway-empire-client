@@ -11,9 +11,6 @@ export class AddStationPage {
     element(by.css('[name="stationName"]')).sendKeys(name);
     element(by.css('[name="addStation"]')).click();
     element(by.css('button.swal2-confirm.swal2-styled')).click();
-  }
-
-  stationNotUniq() {
     element(by.css('button.swal2-confirm.swal2-styled')).click();
   }
 }
