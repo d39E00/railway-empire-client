@@ -18,14 +18,16 @@
             <div class="col form-group">
               <label class="text-warning font-weight-bold">FROM</label>
               <input type="text" class="form-control text-dark text-xl-center" placeholder="DEPARTURE STATION"
-                     name="stationDeparture" ngModel #stationDeparture="ngModel" required autocomplete="off"
+                     name="stationDeparture" id="stationDepartureByDates"
+                     ngModel #stationDeparture="ngModel" required autocomplete="off"
                      list="stationsList">
             </div>
             <div class="col-1"></div>
             <div class="col form-group">
               <label class="text-warning font-weight-bold">TO</label>
               <input type="text" class="form-control text-center text-dark" placeholder="ARRIVAL STATION"
-                     name="stationArrival" ngModel #stationArrival="ngModel" required autocomplete="off"
+                     name="stationArrival" id="stationArrivalByDates"
+                     ngModel #stationArrival="ngModel" required autocomplete="off"
                      list="stationsList">
             </div>
           </div>
@@ -35,13 +37,14 @@
             <div class="col form-group">
               <label class="text-warning font-weight-bold">DATE DEPARTURE</label>
               <input type="date" class="form-control text-center" width="50" name="dateDeparture"
-                     ngModel #dateDeparture="ngModel" required>
+                     ngModel id="dateDepartureByDates"
+                     #dateDeparture="ngModel" required>
             </div>
             <div class="col-1"></div>
             <div class="col form-group">
               <label class="text-warning font-weight-bold">DATE ARRIVAL</label>
               <input type="date" class="form-control text-center" width="50" name="dateArrival"
-                     ngModel #dateArrival="ngModel" required>
+                     ngModel #dateArrival="ngModel">
             </div>
             <div class="col-1"></div>
           </div>

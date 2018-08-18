@@ -122,12 +122,13 @@ export class ContentSeatsComponent implements OnInit {
             });
             this.router.navigateByUrl('/home');
           }
-        }
+        } else { this.router.navigateByUrl('/home'); }
       }, error => {
         console.log(error);
         swal({
           title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
         });
+        this.router.navigateByUrl('/home');
       });
     } else {
       swal({
