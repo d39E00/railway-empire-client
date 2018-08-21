@@ -7,7 +7,7 @@ export class LoginPage {
 
   logWithTruthParametersAsUser() {
     const credentials = {
-      username: 'veaufa@mail.ru',
+      username: 'bob@mail.ru',
       password: 'pass'
     };
     this.fillCredentials(credentials);

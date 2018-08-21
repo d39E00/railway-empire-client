@@ -11,12 +11,11 @@ describe('Main business case', () => {
   let schedule: SchedulePage;
   let login: LoginPage;
   let menu: MenuPage;
-  const name = 'Voronezh';
-  const stationDeparture = 'Voronezh';
+  const stationDeparture = 'Minsk';
   const stationArrival = 'Moscow';
-  const date = '22.08.2018' + protractor.Key.TAB + '10:00:00';
-  const trainName = 'T120';
-  const dateDeparture = '22.08.2018';
+  const date = '27.08.2018' + protractor.Key.TAB + '10:00:00';
+  const trainName = 'T127';
+  const dateDeparture = '27.08.2018';
 
   beforeEach(() => {
     newStation = new AddStationPage();
@@ -42,7 +41,7 @@ describe('Main business case', () => {
     login.navigateTo();
     login.logWithTruthParametersAsAdmin();
     menu.getTabNewItem();
-    newStation.addStation(name);
+    newStation.addStation(stationDeparture);
   });
 
   it('Login as ADMIN create schedule with new station', () => {
@@ -51,11 +50,11 @@ describe('Main business case', () => {
   });
 
   it('Login as USER find and book ticket', () => {
-    login.navigateTo();
     login.logWithTruthParametersAsUser();
     menu.getTabSchedule();
     schedule.findSchedule(stationDeparture, stationArrival, dateDeparture);
     menu.navigateTo();
     menu.getItemTickets();
+    login.logOut();
   });
 });
