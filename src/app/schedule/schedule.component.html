@@ -115,7 +115,7 @@
     <td>
       <div>
         <label class='font-weight-light'>
-          {{ getDelayBetweenTwoDates(schedule.dateDeparture, schedule.dateArrival)}}
+          {{ getDelayBetweenTwoDates(schedule.dateDeparture, schedule.dateIntermediateDeparture)}}
         </label>
       </div>
       <img src='/src/assets/images/arrow-13-xxl.png' width='50'>
@@ -170,7 +170,7 @@
     <td>
       <div>
         <label class='font-weight-light'>
-          {{getDelayBetweenTwoDates(schedule.dateDeparture, schedule.dateArrival)}}
+          {{getDelayBetweenTwoDates(schedule.dateIntermediateArrival, schedule.dateArrival)}}
         </label>
       </div>
       <img src='/src/assets/images/arrow-13-xxl.png' width='50'>
@@ -190,15 +190,21 @@
     </td>
     <td>
       <br>
-      <div *ngIf="schedule.price!=0">
-        <label>
-          {{schedule.price }}
-        </label>
-        <button class='btn btn-lg btn-outline-warning'
-                (click)="findTicketTransfer(schedule.idScheduleDeparture, schedule.idScheduleArrival)"
-                [hidden]="!ROLE_USER">
-          FIND TICKET
-        </button>
+      <div class="row">
+        <div *ngIf="schedule.price!=0">
+          <div class="col">
+            <label>
+              {{schedule.price }}
+            </label>
+          </div>
+          <div class="col">
+            <button class='btn btn-lg btn-outline-warning'
+                    (click)="findTicketTransfer(schedule.idScheduleDeparture, schedule.idScheduleArrival)"
+                    [hidden]="!ROLE_USER">
+              FIND TICKET
+            </button>
+          </div>
+        </div>
       </div>
       <label *ngIf="schedule.price==0" class="font-weight-bold text-warning">
         TRAIN ARRIVED ..

@@ -130,18 +130,18 @@
       </ul>
     </div>
     <div style="margin-bottom: 5%; margin-top: -5%" [hidden]="!FLAG">
-      <button (click)="prev()" class="btn btn-light border-warning prev">
+      <button (click)="prev()" class="btn btn-light border-warning prev" name="prev">
         <img src="/src/assets/images/left-arrow.png">
       </button>
       <button (click)="bookingTicket()" class="btn bg-light btn-outline-warning" style="margin-left: 5%">
         BOOK TICKET
       </button>
-      <button (click)="next()" class="btn btn-light border-warning next">
+      <button (click)="next()" class="btn btn-light border-warning next" name="next">
         <img src="/src/assets/images/right-arrow.png">
       </button>
     </div>
     <div style="margin-bottom: 5%; margin-top: -5%" [hidden]="FLAG">
-      <button (click)="bookingTicket()" class="btn bg-light btn-outline-warning" style="margin-left: 46%">
+      <button (click)="bookingTicket()" class="btn bg-light btn-outline-warning" style="margin-left: 46%" name="book">
         BOOK TICKET
       </button>
     </div>

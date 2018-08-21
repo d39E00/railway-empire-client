@@ -56,6 +56,7 @@ export class ScheduleByDatesStationsComponent implements OnInit {
         this.schedulesTransfer = res;
         this.messageTransferEvent.emit(this.schedulesTransfer);
       }, error => {
+        alert(JSON.stringify(error));
         console.log(error);
         swal({
           title: 'Oops..', text: error.error.message.toString().split('[MESSAGE]:')[1], type: 'error'
