@@ -2,6 +2,9 @@
 
 > ADDITIONAL WEB APPLICATION FOR RAILWAY EMPIRE COMPANY.
 
+![ы](https://media.giphy.com/media/1rN42BcwLSQqDXNztc/giphy.gif)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
 
 ## Development server
@@ -23,4 +26,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Additional applications
 ###  🚇  [Railway Empire](https://github.com/ElinaValieva/railway-empire "Railway Empire")
 ###  🕑  [Board Timeschedule Railway Empire](https://github.com/ElinaValieva/board-for-railway-empire "Board Timeschedule Railway Empire")
-### :book:  [Technical Description Document](http://tsd "Technical description document")
+### :book:  [Technical Description Document](https://docs.google.com/document/d/1mAfonnv3jGGsdL8SuQSIqbCStQ-zN2_L4fsDTbzHBiE/edit "Technical description document")
