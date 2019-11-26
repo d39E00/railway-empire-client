@@ -1,8 +1,8 @@
 # 🚇 RAILWAY EMPIRE CLIENT
 
-> ADDITIONAL WEB APPLICATION FOR RAILWAY EMPIRE COMPANY.
+> ADDITIONAL WEB APPLICATION FOR RAILWAY EMPIRE.
 
-![ы](https://media.giphy.com/media/1rN42BcwLSQqDXNztc/giphy.gif)
+![ы](https://github.com/ElinaValieva/railway-empire-client/blob/master/railway.gif)
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
